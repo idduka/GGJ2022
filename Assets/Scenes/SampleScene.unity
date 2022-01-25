@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2010514416515275942, guid: d3c9b96a2d76ff04394d373c1d462a96, type: 3}
+      propertyPath: Speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2010514416515275943, guid: d3c9b96a2d76ff04394d373c1d462a96, type: 3}
       propertyPath: m_Name
       value: Bocca

@@ -14,6 +14,8 @@ public class HaqAlla : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Time.deltaTime * Input.GetAxis("Horizontal") * Speed, 0, Time.deltaTime * Input.GetAxis("Vertical") * Speed);
+        var direction = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+        direction.Normalize();
+        transform.Translate(direction * Speed * Time.deltaTime);
     }
 }
