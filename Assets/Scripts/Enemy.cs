@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     
     public int HitPoints { get; set; }
 
+    public EnemySpawner EnemySpawner { private get; set; }
+    
     private void FixedUpdate()
     {
         transform.position = Vector3.MoveTowards(transform.position, TargetPlanet.transform.position, _speed);
@@ -24,6 +26,7 @@ public class Enemy : MonoBehaviour
         
         if (planet != null)
         {
+            EnemySpawner.AliveEnemies.Remove(this);
             Destroy(gameObject);
         }
     }

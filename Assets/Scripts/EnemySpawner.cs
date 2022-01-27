@@ -33,6 +33,7 @@ public class EnemySpawner : MonoBehaviour
         createdEnemy.transform.localPosition = _topLeftCorner + spawnPoint;
         var enemyComponent = createdEnemy.GetComponent<Enemy>();
         enemyComponent.TargetPlanet = _targetPlanet;
+        enemyComponent.EnemySpawner = this;
         AliveEnemies.Add(enemyComponent);
     }
     
