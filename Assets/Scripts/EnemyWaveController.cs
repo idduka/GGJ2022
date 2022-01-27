@@ -44,7 +44,10 @@ public class EnemyWaveController : MonoBehaviour
 
     private void OnDestroy()
     {
-        StopCoroutine(_coroutine);
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
     }
 
     private IEnumerator SpawnWaves()
