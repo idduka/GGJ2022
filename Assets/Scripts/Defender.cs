@@ -45,7 +45,7 @@ public class Defender : MonoBehaviour
         }
     }
 
-    private void Fire()
+    public void Fire()
     {
         AudioSource firesound = GetComponent <AudioSource>();
         firesound.Play(0);
