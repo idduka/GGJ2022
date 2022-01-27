@@ -33,6 +33,13 @@ public class Defender : MonoBehaviour
 
             //var direction = new Vector3(Input.GetAxis(horizontalAxisName), 0.0f, 0.0f).normalized;
             //transform.Translate(direction * RadialSpeed * Time.deltaTime);
+
+            var horizontalAxisValue = Input.GetAxis(horizontalAxisName);
+            if (horizontalAxisValue != 0)
+            {
+                var rotation = RadialSpeed * Time.deltaTime * horizontalAxisValue;
+                transform.RotateAround(HomePlanet.transform.position, Vector3.back, rotation);
+            }
         }
     }
 }
