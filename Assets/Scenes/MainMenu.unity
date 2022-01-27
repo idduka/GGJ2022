@@ -446,7 +446,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 1 vs 1 mode
 --- !u!222 &1657622733
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -468,7 +468,6 @@ GameObject:
   - component: {fileID: 1888319219}
   - component: {fileID: 1888319218}
   - component: {fileID: 1888319221}
-  - component: {fileID: 1888319222}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -494,7 +493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1888319218
@@ -541,16 +540,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1888319222}
-        m_TargetAssemblyTypeName: ButtonTest, Assembly-CSharp
-        m_MethodName: setText
-        m_Mode: 5
+      - m_Target: {fileID: 1888319221}
+        m_TargetAssemblyTypeName: ButtonNewScene, Assembly-CSharp
+        m_MethodName: NextScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: gj
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1888319219
@@ -601,17 +600,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48ac2557e6deb4840a1a8c618d9775da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1888319222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1888319216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a4bed22eac1e446bcb117bb1307431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
