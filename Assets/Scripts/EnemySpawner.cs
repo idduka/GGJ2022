@@ -13,9 +13,13 @@ public class EnemySpawner : MonoBehaviour
     [Tooltip("The prefab that shall be used to spawn the default enemy.")]
     private GameObject _enemyPrefab;
 
+    [SerializeField]
+    [Tooltip("The planet this enemy wants to attack.")]
+    private Planet _targetPlanet;
+    
     private Vector2 _topLeftCorner;
 
-    public List<Enemy> AliveEnemies { get; set; }
+    public List<Enemy> AliveEnemies { get; set; } = new List<Enemy>();
 
     private void Start()
     {
@@ -27,7 +31,9 @@ public class EnemySpawner : MonoBehaviour
     {
         var createdEnemy = Instantiate(_enemyPrefab, _playerZone);
         createdEnemy.transform.localPosition = _topLeftCorner + spawnPoint;
-        AliveEnemies.Add(createdEnemy.GetComponent<Enemy>());
+        var enemyComponent = createdEnemy.GetComponent<Enemy>();
+        enemyComponent.TargetPlanet = _targetPlanet;
+        AliveEnemies.Add(enemyComponent);
     }
     
     public void StartSpawn(List<Vector2> spawnPoints)
