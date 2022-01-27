@@ -13,16 +13,18 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, TargetPlanet.transform.position, 0.1f);
+        transform.position = Vector3.MoveTowards(transform.position, TargetPlanet.transform.position, _speed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         var planet = other.GetComponent<Planet>();
 
+        Debug.Log($"HIT PLANET: {planet != null}");
+        
         if (planet != null)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
