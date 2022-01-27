@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerZone: {fileID: 0}
   _enemyPrefab: {fileID: 6851775728168396017, guid: 9f3526102b5f9234dbce60da6f323b52, type: 3}
+  _targetPlanet: {fileID: 0}
+  _otherEnemySpawner: {fileID: 0}
+  _respawnDelay: 0

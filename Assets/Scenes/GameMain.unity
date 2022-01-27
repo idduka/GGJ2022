@@ -148,7 +148,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5303485530135203226, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
       propertyPath: m_Name
-      value: EnemySpawner
+      value: EnemySpawner Player 1
       objectReference: {fileID: 0}
     - target: {fileID: 5303485530135203227, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
       propertyPath: m_RootOrder
@@ -199,9 +199,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5774989468445209976}
     - target: {fileID: 8585749969746330297, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
+      propertyPath: _respawnDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585749969746330297, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
       propertyPath: _targetPlanet
       value: 
       objectReference: {fileID: 110614400}
+    - target: {fileID: 8585749969746330297, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
+      propertyPath: _otherEnemySpawner
+      value: 
+      objectReference: {fileID: 1542135671}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
 --- !u!114 &507171867 stripped
@@ -658,7 +666,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5303485530135203226, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
       propertyPath: m_Name
-      value: EnemySpawner
+      value: EnemySpawner Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 5303485530135203227, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
       propertyPath: m_RootOrder
@@ -709,9 +717,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1129290509}
     - target: {fileID: 8585749969746330297, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
+      propertyPath: _respawnDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8585749969746330297, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
       propertyPath: _targetPlanet
       value: 
       objectReference: {fileID: 1190018689}
+    - target: {fileID: 8585749969746330297, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
+      propertyPath: _otherEnemySpawner
+      value: 
+      objectReference: {fileID: 507171867}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
 --- !u!114 &1542135671 stripped
