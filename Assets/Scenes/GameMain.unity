@@ -325,9 +325,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f0251e3a3b184664d88dde2628136a46, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b1ebe3a6e9bd84e4dbb6b1dc784cb50e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.293
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -411,11 +411,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &1082553931 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2705049518677812742, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
-  m_PrefabInstance: {fileID: 1720408026}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1120248197
 PrefabInstance:
   m_ObjectHideFlags: 0
