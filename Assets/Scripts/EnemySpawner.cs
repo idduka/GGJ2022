@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +15,14 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     [Tooltip("The planet this enemy wants to attack.")]
     private Planet _targetPlanet;
+
+    [SerializeField]
+    [Tooltip("The enemy spawner of the other player area.")]
+    private EnemySpawner _otherEnemySpawner;
+
+    [SerializeField]
+    [Tooltip("The number of seconds that shall be waited before the enemy respawns on the other side.")]
+    private float _respawnDelay;
     
     private Vector2 _topLeftCorner;
 
@@ -36,31 +43,24 @@ public class EnemySpawner : MonoBehaviour
         enemyComponent.EnemySpawner = this;
         AliveEnemies.Add(enemyComponent);
     }
-    
-    public void StartSpawn(List<Vector2> spawnPoints)
+
+    public void SpawnEnemyAtOtherSide(Vector2 relativePosition)
     {
-        StartCoroutine(StartSpawnInternal(spawnPoints));
+        StartCoroutine(_otherEnemySpawner.RespawnEnemy(relativePosition));
     }
-
-    private IEnumerator StartSpawnInternal(List<Vector2> spawnPoints)
+    
+    public IEnumerator RespawnEnemy(Vector2 relativePosition)
     {
-        yield return null;
+        yield return new WaitForSeconds(_respawnDelay);
         
-        foreach (var spawnPoint in spawnPoints)
-        {
-            /*var actualSpawnPoint =
-                new Vector2(_playerZone.position.x + spawnPoint.x, _playerZone.position.y - spawnPoint.y);*/
-
-            var position = CalculateActualSpawnPosition(spawnPoint);
-            
-            Debug.Log($"ACTUAL point: {spawnPoint.x}, {spawnPoint.y}");
-            
-            Debug.Log($"SPAWN TIME: {DateTime.Now:hh:mm:ss}");
-            var createdEnemy = Instantiate(_enemyPrefab, _playerZone);
-            createdEnemy.transform.localPosition = position;
-            
-            yield return new WaitForSeconds(0.3f);
-        }
+        var createdEnemy = Instantiate(_enemyPrefab, _playerZone);
+        createdEnemy.transform.localPosition = relativePosition;
+        var enemyComponent = createdEnemy.GetComponent<Enemy>();
+        enemyComponent.TargetPlanet = _targetPlanet;
+        enemyComponent.EnemySpawner = this;
+        enemyComponent.IsRespawn = true;
+        enemyComponent.ChangeSprite();
+        AliveEnemies.Add(enemyComponent);
     }
 
     private Vector2 CalculateActualSpawnPosition(Vector2 baseSpawnPosition)
