@@ -8,6 +8,7 @@ public class Defender : MonoBehaviour
     public bool IsPlayer1 = true;
     public Planet HomePlanet;
     public float RadialSpeed = 180;
+    public Projectile ProjectilePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -31,15 +32,22 @@ public class Defender : MonoBehaviour
             var horizontalAxisName = IsPlayer1 ? "P1Horizontal" : "P2Horizontal";
             var fireAxisName = IsPlayer1 ? "P1Fire" : "P2Fire";
 
-            //var direction = new Vector3(Input.GetAxis(horizontalAxisName), 0.0f, 0.0f).normalized;
-            //transform.Translate(direction * RadialSpeed * Time.deltaTime);
-
             var horizontalAxisValue = Input.GetAxis(horizontalAxisName);
             if (horizontalAxisValue != 0)
             {
                 var rotation = RadialSpeed * Time.deltaTime * horizontalAxisValue;
                 transform.RotateAround(HomePlanet.transform.position, Vector3.back, rotation);
             }
+            if (Input.GetButtonDown(fireAxisName))
+            {
+                Fire();
+            }
         }
+    }
+
+    private void Fire()
+    {
+        var projectile = Instantiate(ProjectilePrefab, transform.position, transform.rotation);
+        //projectile.Direction = (transform.position - HomePlanet.transform.position).normalized;
     }
 }
