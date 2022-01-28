@@ -457,6 +457,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!20 &851796169 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7239957971986471433, guid: cda511b06f2c9df499f6e28dbf93dbfc, type: 3}
+  m_PrefabInstance: {fileID: 1120248197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &902099846
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a581294b7c06f4b9bfbda10678e0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1camera: {fileID: 1084497133}
+  player2camera: {fileID: 851796169}
 --- !u!4 &902099848
 Transform:
   m_ObjectHideFlags: 0
@@ -554,6 +561,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1084497133 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7239957971986471433, guid: cda511b06f2c9df499f6e28dbf93dbfc, type: 3}
+  m_PrefabInstance: {fileID: 7239957972371595894}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1120248197
 PrefabInstance:
   m_ObjectHideFlags: 0

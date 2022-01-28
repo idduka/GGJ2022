@@ -22,8 +22,8 @@ public class GameController : MonoBehaviour
             if (_menuShown)
             {
                 // Remove menu and resume game.
-                player1camera.enabled = true;
-                player2camera.enabled = true;
+                //player1camera.enabled = true;
+                //player2camera.enabled = true;
 
                 SceneManager.UnloadSceneAsync("MainMenu");
                 
@@ -36,11 +36,10 @@ public class GameController : MonoBehaviour
                 // Pause game and show menu.
                 Time.timeScale = 0.0f;
 
+               
 
-               player2camera.enabled = false;
-                             
-            
-               SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+                SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+                SceneManager.sceneLoaded += SceneManager_sceneLoaded;
 
                
             }
@@ -48,4 +47,19 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        player1camera.enabled = false;
+        player2camera.enabled = false;
+        player1camera.enabled = true;
+        player2camera.enabled = true;
+       // throw new System.NotImplementedException();
     }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.Log(mode);
+    }
+
+}
