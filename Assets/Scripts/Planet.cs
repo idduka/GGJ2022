@@ -56,7 +56,9 @@ public class Planet : MonoBehaviour
         _hitPoints -= damage;
 
         _healthBar.SetValue(_hitPoints);
-        
+        AudioSource planetDamage = GetComponent<AudioSource>();
+        planetDamage.Play(0);
+
         if (_hitPoints <= 0)
         {
             _victoryController.SetDefeat();
