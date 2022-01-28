@@ -62,8 +62,11 @@ public class Defender : MonoBehaviour
             }
             if (Input.GetButtonDown(medkitName) && HomePlanet.CoinCount >= 15)
             {
-                HomePlanet.CoinCount -= 15;
-                HomePlanet.HealDamage(2);
+                if (HomePlanet._hitPoints < 99)
+                {
+                    HomePlanet.CoinCount -= 15;
+                    HomePlanet.HealDamage(2);
+                }
             }
             if (Input.GetButtonDown(trifireAxisName) && HomePlanet.CoinCount >= 15)
             {
