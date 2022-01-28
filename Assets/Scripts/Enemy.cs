@@ -32,6 +32,8 @@ public class Enemy : MonoBehaviour
     
     public EnemySpawner EnemySpawner { private get; set; }
 
+    public GameObject GibPrefab;
+
     private void Start()
     {
         if(IsRespawn)
@@ -122,6 +124,10 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log($"Killed enemy position: {transform.localPosition.x}, {transform.localPosition.y}");
         EnemySpawner.AliveEnemies.Remove(this);
+        if (IsRespawn)
+        {
+            Instantiate(GibPrefab, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 }

@@ -131,6 +131,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  GibPrefab: {fileID: 8377476569938966772, guid: b2028e66ea08d4f4c8e3c07cd2b12062, type: 3}
 --- !u!50 &-3487106108823653374
 Rigidbody2D:
   serializedVersion: 4
