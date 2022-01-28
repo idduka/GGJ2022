@@ -511,6 +511,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd1684bb45041b381ea33d91ea12f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &385309782 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4702004876797821538, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
+  m_PrefabInstance: {fileID: 1720408026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &501012482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,6 +1175,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!198 &895008899 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4702004876797821538, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
+  m_PrefabInstance: {fileID: 6048695526424587223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &902099846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,6 +2269,10 @@ PrefabInstance:
       value: Player2Defender
       objectReference: {fileID: 0}
     - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
+      propertyPath: DirtTrail
+      value: 
+      objectReference: {fileID: 385309782}
+    - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
       propertyPath: IsPlayer1
       value: 0
       objectReference: {fileID: 0}
@@ -2863,6 +2877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1Defender
       objectReference: {fileID: 0}
+    - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
+      propertyPath: DirtTrail
+      value: 
+      objectReference: {fileID: 895008899}
     - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
       propertyPath: HomePlanet
       value: 
