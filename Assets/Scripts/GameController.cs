@@ -40,8 +40,9 @@ public class GameController : MonoBehaviour
 
                 SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
                 SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-
                
+
+
             }
             _menuShown = !_menuShown;
         }
@@ -49,10 +50,14 @@ public class GameController : MonoBehaviour
 
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        player1camera.enabled = false;
-        player2camera.enabled = false;
-        player1camera.enabled = true;
-        player2camera.enabled = true;
+        if (player1camera != null)
+             {
+
+            player1camera.enabled = false;
+            player2camera.enabled = false;
+            player1camera.enabled = true;
+            player2camera.enabled = true;
+        }
        // throw new System.NotImplementedException();
     }
 
