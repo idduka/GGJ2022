@@ -46,7 +46,16 @@ public class Defender : MonoBehaviour
                 PlaceTurret();
                 HomePlanet.CoinCount -= 15;
             }
-            
+            //healplanet 
+            if (Input.GetKeyDown(IsPlayer1 ? KeyCode.Alpha1 : KeyCode.Alpha7) && HomePlanet.CoinCount >= 5)
+            {
+               
+                HomePlanet.CoinCount -= 5;
+                HomePlanet.HealDamage(2);
+                    
+            }
+
+
             var horizontalAxisValue = Input.GetAxis(horizontalAxisName);
             if (horizontalAxisValue != 0)
             {

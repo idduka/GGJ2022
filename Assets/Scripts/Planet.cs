@@ -57,7 +57,20 @@ public class Planet : MonoBehaviour
     public int CoinCount { get; set; }
     
     private PlanetState _planetState = PlanetState.Healthy;
+    //clintsc
+    public void HealDamage(int damage)
+    {
+        _hitPoints += damage;
 
+        _healthBar.SetValue(_hitPoints);
+       
+
+
+        SetSprite();
+    }
+
+
+    //
     public void ApplyDamage(int damage)
     {
         _hitPoints -= damage;
