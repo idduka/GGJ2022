@@ -10,7 +10,9 @@ public class Defender : MonoBehaviour
     public float RadialSpeed = 180;
     public Projectile ProjectilePrefab;
     public GameState GameState;
-
+    public EnemySpawner EnemySpawner;
+    public Turret TurretPrefab;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,12 @@ public class Defender : MonoBehaviour
             var horizontalAxisName = IsPlayer1 ? "P1Horizontal" : "P2Horizontal";
             var fireAxisName = IsPlayer1 ? "P1Fire" : "P2Fire";
 
+            if (Input.GetKeyDown(IsPlayer1 ? KeyCode.S : KeyCode.K) && HomePlanet.CoinCount >= 15)
+            {
+                PlaceTurret();
+                HomePlanet.CoinCount -= 15;
+            }
+            
             var horizontalAxisValue = Input.GetAxis(horizontalAxisName);
             if (horizontalAxisValue != 0)
             {
@@ -60,5 +68,14 @@ public class Defender : MonoBehaviour
         var projectile = Instantiate(ProjectilePrefab,
             transform.position + (transform.rotation * Vector3.up * GetComponent<SpriteRenderer>().bounds.size.y / 2),
             transform.rotation);
+    }
+
+    private void PlaceTurret()
+    {
+        var turret = Instantiate(TurretPrefab,
+            transform.position + (transform.rotation * Vector3.up * 2),
+            transform.rotation).GetComponent<Turret>();
+
+        turret.EnemySpawner = EnemySpawner;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class EnemyWaveController : MonoBehaviour
@@ -36,6 +37,10 @@ public class EnemyWaveController : MonoBehaviour
     [SerializeField]
     [Tooltip("The game state object.")]
     private GameState _gameState;
+
+    [SerializeField]
+    [Tooltip("The text field that displays the wave countdown.")]
+    private Text _nextWaveTextField;
     
     private int _waveCount = 1;
     
@@ -65,8 +70,8 @@ public class EnemyWaveController : MonoBehaviour
         while (!_gameState.IsGameOver)
         {
             Debug.Log("Waiting for next wave spawn.");
-            
-            yield return new WaitForSeconds(_waveSpawnDelay);
+
+            yield return NextWaveCountDown();
             
             if (_gameState.IsGameOver)
             {
@@ -154,5 +159,22 @@ public class EnemyWaveController : MonoBehaviour
         }
 
         return spawnPointOrderList;
+    }
+
+    private IEnumerator NextWaveCountDown()
+    {
+        _nextWaveTextField.enabled = true;
+        
+        var remainingSeconds = _waveSpawnDelay;
+
+        while (remainingSeconds > 0)
+        {
+            Debug.Log($"Remaining seconds: {remainingSeconds}");
+            _nextWaveTextField.text = $"Next wave in: {remainingSeconds}";
+            remainingSeconds--;
+            yield return new WaitForSeconds(1);
+        }
+
+        _nextWaveTextField.enabled = false;
     }
 }

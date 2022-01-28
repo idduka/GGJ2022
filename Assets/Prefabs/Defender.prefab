@@ -102,3 +102,5 @@ MonoBehaviour:
   RadialSpeed: 180
   ProjectilePrefab: {fileID: 4079692119126906502, guid: 50160af02db9104479dfdab75105d1be, type: 3}
   GameState: {fileID: 11400000, guid: 2e40c394667cb3f408f949551d1791f3, type: 2}
+  EnemySpawner: {fileID: 0}
+  TurretPrefab: {fileID: -1184181345860249836, guid: 8f7d58a0e190faf42b4ac96fb6898e26, type: 3}

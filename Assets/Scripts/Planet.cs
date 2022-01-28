@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -46,11 +47,17 @@ public class Planet : MonoBehaviour
     [SerializeField]
     [Tooltip("The object that controls the victory.")]
     private VictoryController _victoryController;
+
+    [SerializeField]
+    [Tooltip("The text field displaying the number of coins.")]
+    private TextMeshProUGUI _coinTextField;
     
     public float Radius = 1.0f;
 
-    private PlanetState _planetState = PlanetState.Healthy;
+    public int CoinCount { get; set; }
     
+    private PlanetState _planetState = PlanetState.Healthy;
+
     public void ApplyDamage(int damage)
     {
         _hitPoints -= damage;
@@ -83,9 +90,14 @@ public class Planet : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        _coinTextField.text = CoinCount.ToString();
+    }
+
     private void SetSprite()
     {
-        if (_hitPoints < _veryDamagedSpriteThreshold )
+        if (_hitPoints < _veryDamagedSpriteThreshold)
         {
             if (_planetState != PlanetState.VeryDamaged)
             {

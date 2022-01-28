@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
 
         var planet = other.GetComponent<Planet>();
 
-        Debug.Log($"HIT PLANET: {planet != null}");
+        // Debug.Log($"HIT PLANET: {planet != null}");
         
         if (planet != null)
         {
@@ -85,6 +85,7 @@ public class Enemy : MonoBehaviour
             Destroy(projectile.gameObject);
             if (!IsRespawn)
             {
+                TargetPlanet.CoinCount++;
                 StartCoroutine(PhaseOut());
             }
             else
@@ -130,7 +131,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log($"Killed enemy position: {transform.localPosition.x}, {transform.localPosition.y}");
+        // Debug.Log($"Killed enemy position: {transform.localPosition.x}, {transform.localPosition.y}");
         EnemySpawner.AliveEnemies.Remove(this);
         if (IsRespawn)
         {
