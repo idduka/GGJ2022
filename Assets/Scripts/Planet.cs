@@ -14,7 +14,7 @@ public class Planet : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The starting hitpoints of the planet")]
-    private int _hitPoints;
+   public int _hitPoints;
 
     [SerializeField]
     [Tooltip("The sprite that is displayed when the planet is slightly damaged.")]
