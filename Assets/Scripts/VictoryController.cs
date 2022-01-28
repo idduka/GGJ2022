@@ -1,6 +1,4 @@
-﻿using System;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class VictoryController : MonoBehaviour
 {
@@ -13,18 +11,26 @@ public class VictoryController : MonoBehaviour
     private VictoryController _otherVictoryController;
 
     [SerializeField]
-    [Tooltip("The game result text for the player.")]
-    private TextMeshProUGUI _gameResultText;
-    
-    [SerializeField]
     [Tooltip("The game state object.")]
     private GameState _gameState;
+
+    [SerializeField]
+    [Tooltip("The sprite for a player defeat.")]
+    private Sprite _defeatSprite;
+    
+    [SerializeField]
+    [Tooltip("The sprite for a player victory.")]
+    private Sprite _victorySprite;
+
+    [SerializeField]
+    [Tooltip("The sprite renderer for the game result.")]
+    private SpriteRenderer _gameResultSpriteRenderer;
     
     public void SetVictory()
     {
         _gameState.IsGameOver = true;
-        _gameResultText.enabled = true;
-        _gameResultText.text = "Victory";
+        _gameResultSpriteRenderer.enabled = true;
+        _gameResultSpriteRenderer.sprite = _victorySprite;
         
         foreach (var enemy in _enemySpawner.AliveEnemies)
         {
@@ -36,8 +42,8 @@ public class VictoryController : MonoBehaviour
 
     public void SetDefeat()
     {
-        _gameResultText.enabled = true;
-        _gameResultText.text = "Defeat";
+        _gameResultSpriteRenderer.enabled = true;
+        _gameResultSpriteRenderer.sprite = _defeatSprite;
 
         _otherVictoryController.SetVictory();
         
@@ -52,6 +58,6 @@ public class VictoryController : MonoBehaviour
     private void Start()
     {
         _gameState.IsGameOver = false;
-        _gameResultText.enabled = false;
+        _gameResultSpriteRenderer.enabled = false;
     }
 }

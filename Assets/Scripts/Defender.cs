@@ -12,11 +12,12 @@ public class Defender : MonoBehaviour
     public GameState GameState;
     public EnemySpawner EnemySpawner;
     public Turret TurretPrefab;
+    public ParticleSystem DirtTrail;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        DirtTrail.enableEmission = false;
     }
 
     // Update is called once per frame
@@ -49,8 +50,13 @@ public class Defender : MonoBehaviour
             var horizontalAxisValue = Input.GetAxis(horizontalAxisName);
             if (horizontalAxisValue != 0)
             {
+                DirtTrail.enableEmission = true;
                 var rotation = RadialSpeed * Time.deltaTime * horizontalAxisValue;
                 transform.RotateAround(HomePlanet.transform.position, Vector3.back, rotation);
+            }
+            else
+            {
+                DirtTrail.enableEmission = false;
             }
             if (Input.GetButtonDown(fireAxisName))
             {
