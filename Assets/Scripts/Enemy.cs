@@ -109,13 +109,11 @@ public class Enemy : MonoBehaviour
         while (curPhaseDuration <= _totalPhaseDuration)
         {
             var colorComponentValue = 1.0f - (_phaseAnimation.Evaluate(curPhaseDuration / _totalPhaseDuration));
-            Debug.Log($"CCV: {colorComponentValue}");
             var newSpriteColor = new Color(colorComponentValue, colorComponentValue, colorComponentValue, colorComponentValue);
             GetComponent<SpriteRenderer>().color = newSpriteColor;
             yield return null;
             curPhaseDuration += Time.deltaTime;
         }
-        Debug.Log($"CCV: Switch!");
         EnemySpawner.SpawnEnemyAtOtherSide(transform.localPosition);
         Die();
     }
