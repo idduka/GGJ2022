@@ -41,10 +41,9 @@ public class DefenderAI : MonoBehaviour
 
             float playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
 
-            if (enemySpawner.AliveEnemies != null && enemySpawner.AliveEnemies.Count > 0 && enemySpawner.AliveEnemies.Count != lastAliveEnemiesCalculation)
+            if (enemySpawner.AliveEnemies != null && enemySpawner.AliveEnemies.Count > 0)
             {
                 enemyAngles = new List<float>();
-                lastAliveEnemiesCalculation = enemySpawner.AliveEnemies.Count;
 
                 foreach (var ea in enemySpawner.AliveEnemies.Where(x => !x.IsPhasing))
                 {
