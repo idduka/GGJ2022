@@ -9,6 +9,7 @@ public class Defender : MonoBehaviour
     public Planet HomePlanet;
     public float RadialSpeed = 180;
     public Projectile ProjectilePrefab;
+    public GameState GameState;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,11 @@ public class Defender : MonoBehaviour
         }
         else
         {
+            if (GameState.IsGameOver)
+            {
+                return;
+            }
+            
             var horizontalAxisName = IsPlayer1 ? "P1Horizontal" : "P2Horizontal";
             var fireAxisName = IsPlayer1 ? "P1Fire" : "P2Fire";
 

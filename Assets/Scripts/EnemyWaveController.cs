@@ -30,8 +30,12 @@ public class EnemyWaveController : MonoBehaviour
     private int _numberOfSpawnPointsIncrease;
 
     [SerializeField]
-    [Tooltip("")]
+    [Tooltip("The transform an player area.")]
     private RectTransform _playerAreaTransform;
+
+    [SerializeField]
+    [Tooltip("The game state object.")]
+    private GameState _gameState;
     
     private int _waveCount = 1;
     
@@ -58,11 +62,16 @@ public class EnemyWaveController : MonoBehaviour
         var maxRandomX = _playerAreaTransform.rect.width;
         var maxRandomY = _playerAreaTransform.rect.height;
         
-        while (true)
+        while (!_gameState.IsGameOver)
         {
             Debug.Log("Waiting for next wave spawn.");
             
             yield return new WaitForSeconds(_waveSpawnDelay);
+            
+            if (_gameState.IsGameOver)
+            {
+                yield break;
+            }
             
             if (_waveCount > 1)
             {
@@ -90,6 +99,11 @@ public class EnemyWaveController : MonoBehaviour
             {
                 foreach (var enemySpawner in _enemySpawners)
                 {
+                    if (_gameState.IsGameOver)
+                    {
+                        yield break;
+                    }
+                    
                     enemySpawner.SpawnEnemy(spawnPoint);
                 }
                 

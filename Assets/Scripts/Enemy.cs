@@ -20,6 +20,10 @@ public class Enemy : MonoBehaviour
     [Tooltip("The transition curve for phasing out and in.")]
     private AnimationCurve _phaseAnimation;
 
+    [SerializeField]
+    [Tooltip("The damage the enemy deals to the planet on contact.")]
+    private int _damageToPlanet;
+
     public bool IsPhasing { get; private set; }
 
     private SpriteRenderer _spriteRenderer;
@@ -65,6 +69,7 @@ public class Enemy : MonoBehaviour
         
         if (planet != null)
         {
+            planet.ApplyDamage(_damageToPlanet);
             EnemySpawner.AliveEnemies.Remove(this);
             Destroy(gameObject);
             return;

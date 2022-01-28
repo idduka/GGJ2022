@@ -101,3 +101,4 @@ MonoBehaviour:
   HomePlanet: {fileID: 0}
   RadialSpeed: 180
   ProjectilePrefab: {fileID: 4079692119126906502, guid: 50160af02db9104479dfdab75105d1be, type: 3}
+  GameState: {fileID: 11400000, guid: 2e40c394667cb3f408f949551d1791f3, type: 2}
