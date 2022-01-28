@@ -106,6 +106,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0.01
   _respawnSprite: {fileID: 21300000, guid: 56589b7efb1cdbd4c8b5d40d1ca970ff, type: 3}
+  _totalPhaseDuration: 3
+  _phaseAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!50 &-3487106108823653374
 Rigidbody2D:
   serializedVersion: 4
