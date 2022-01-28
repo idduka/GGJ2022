@@ -14,7 +14,7 @@ public class DefenderAI : MonoBehaviour
     private EnemySpawner enemySpawner;
 
     private int lastAliveEnemiesCalculation;
-    private List<float> enemyAngles;    
+    private List<float> enemyAngles;
     private Vector2 playerPlanetPosition;
 
     // Start is called before the first frame update
@@ -23,38 +23,60 @@ public class DefenderAI : MonoBehaviour
         lastAliveEnemiesCalculation = 0;
         enemyAngles = new List<float>();
         playerPlanetPosition = playerPlanet.transform.position;
+        StartCoroutine(Ommok());
+    }
+
+    void Update()
+    {
+
     }
 
     // Update is called once per frame
-    void Update()
+    IEnumerator Ommok()
     {
-        float playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
-
-        if (enemySpawner.AliveEnemies != null && enemySpawner.AliveEnemies.Count > 0 && enemySpawner.AliveEnemies.Count != lastAliveEnemiesCalculation)
+        while (true)
         {
-            enemyAngles = new List<float>();
+            yield return new WaitForSeconds(0.5f);
+
+            float playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
+
+            if (enemySpawner.AliveEnemies != null && enemySpawner.AliveEnemies.Count > 0 && enemySpawner.AliveEnemies.Count != lastAliveEnemiesCalculation)
+            {
+                enemyAngles = new List<float>();
+                lastAliveEnemiesCalculation = enemySpawner.AliveEnemies.Count;
+
+                foreach (var ea in enemySpawner.AliveEnemies)
+                {
+                    float enemyAngle = AngleBetweenVector2(ea.transform.position, playerPlanetPosition);
+                    enemyAngles.Add(enemyAngle);
+                }
+            }
+
+            if (enemyAngles.Count > 0)
+            {
+                foreach (float ea in enemyAngles)
+                {
+                    float angleToTurn = (playerAngle - ea);
+
+                    while (angleToTurn > 10)
+                    {
+                        float actualTurnAngle = Mathf.Max(10, angleToTurn);
+                        transform.RotateAround(playerPlanetPosition, Vector3.back, actualTurnAngle);
+                        angleToTurn = angleToTurn - actualTurnAngle;
+                        yield return new WaitForSeconds(1f);
+                    }
+
+                    transform.RotateAround(playerPlanetPosition, Vector3.back, angleToTurn);
+
+                    playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
+                    player.Fire();
+                }
+
+                enemyAngles = new List<float>();
+            }
+
             lastAliveEnemiesCalculation = enemySpawner.AliveEnemies.Count;
-
-            foreach (var ea in enemySpawner.AliveEnemies)
-            {
-                float enemyAngle = AngleBetweenVector2(ea.transform.position, playerPlanetPosition);
-                enemyAngles.Add(enemyAngle);
-            }
         }
-
-        if (enemyAngles.Count > 0)
-        {
-            foreach(float ea in enemyAngles)
-            {
-                transform.RotateAround(playerPlanetPosition, Vector3.back, (playerAngle - ea));
-                playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
-                player.Fire();
-            }
-
-            enemyAngles = new List<float>();
-        }
-
-        lastAliveEnemiesCalculation = enemySpawner.AliveEnemies.Count;
     }
 
 
