@@ -49,7 +49,10 @@ public class Defender : MonoBehaviour
     {
         AudioSource firesound = GetComponent <AudioSource>();
         firesound.Play(0);
-        var projectile = Instantiate(ProjectilePrefab, transform.position, transform.rotation);
-        //projectile.Direction = (transform.position - HomePlanet.transform.position).normalized;
+        // start position for projectile is:
+        // defender position + vector towards defender sprite center.
+        var projectile = Instantiate(ProjectilePrefab,
+            transform.position + (transform.rotation * Vector3.up * GetComponent<SpriteRenderer>().bounds.size.y / 2),
+            transform.rotation);
     }
 }

@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0.01
   _respawnSprite: {fileID: 21300000, guid: 130ff4f75f124c14192df3266d1cdd7a, type: 3}
-  _totalPhaseDuration: 3
+  _totalPhaseDuration: 1.2
   _phaseAnimation:
     serializedVersion: 2
     m_Curve:
