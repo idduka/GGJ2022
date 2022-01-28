@@ -14,6 +14,8 @@ public class Defender : MonoBehaviour
     public Turret TurretPrefab;
     public ParticleSystem DirtTrail;
     public SmokeScreen SmokeScreen;
+
+    private bool _trifireMode = false;
     
     // Start is called before the first frame update
     void Start()
@@ -65,6 +67,11 @@ public class Defender : MonoBehaviour
             }
             if (Input.GetButtonDown(trifireAxisName) && HomePlanet.CoinCount >= 15)
             {
+                if (!_trifireMode)
+                {
+                    HomePlanet.CoinCount -= 15;
+                    StartCoroutine(EnterTrifireMode());
+                }
             }
             if (Input.GetButtonDown(empAxisName) && HomePlanet.CoinCount >= 15)
             {
@@ -86,7 +93,14 @@ public class Defender : MonoBehaviour
             }
             if (Input.GetButtonDown(fireAxisName))
             {
-                Fire();
+                if (_trifireMode)
+                {
+                    TriFire();
+                }
+                else
+                {
+                    Fire();
+                }
             }
         }
     }
@@ -97,9 +111,27 @@ public class Defender : MonoBehaviour
         firesound.Play(0);
         // start position for projectile is:
         // defender position + vector towards defender sprite center.
-        var projectile = Instantiate(ProjectilePrefab,
+        Instantiate(ProjectilePrefab,
             transform.position + (transform.rotation * Vector3.up * GetComponent<SpriteRenderer>().bounds.size.y / 2),
             transform.rotation);
+    }
+
+    public void TriFire()
+    {
+        AudioSource firesound = GetComponent<AudioSource>();
+        firesound.Play(0);
+
+        // start position for projectile is:
+        // defender position + vector towards defender sprite center.
+        Instantiate(ProjectilePrefab,
+            transform.position + (transform.rotation * Vector3.up * GetComponent<SpriteRenderer>().bounds.size.y / 2),
+            transform.rotation * Quaternion.AngleAxis(20, Vector3.back));
+        Instantiate(ProjectilePrefab,
+            transform.position + (transform.rotation * Vector3.up * GetComponent<SpriteRenderer>().bounds.size.y / 2),
+            transform.rotation);
+        Instantiate(ProjectilePrefab,
+            transform.position + (transform.rotation * Vector3.up * GetComponent<SpriteRenderer>().bounds.size.y / 2),
+            transform.rotation * Quaternion.AngleAxis(-20, Vector3.back));
     }
 
     private void PlaceTurret()
@@ -109,5 +141,12 @@ public class Defender : MonoBehaviour
             transform.rotation).GetComponent<Turret>();
 
         turret.EnemySpawner = EnemySpawner;
+    }
+
+    private IEnumerator EnterTrifireMode()
+    {
+        _trifireMode = true;
+        yield return new WaitForSeconds(10.0f);
+        _trifireMode = false;
     }
 }
