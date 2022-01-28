@@ -38,6 +38,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject GibPrefab;
 
+    public GameObject ExplosionPrefab;
+
     private void Start()
     {
         if(IsRespawn)
@@ -72,6 +74,7 @@ public class Enemy : MonoBehaviour
             planet.ApplyDamage(_damageToPlanet);
             EnemySpawner.AliveEnemies.Remove(this);
             Destroy(gameObject);
+            Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
             return;
         }
 

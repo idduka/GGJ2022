@@ -133,6 +133,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _damageToPlanet: 5
   GibPrefab: {fileID: 8377476569938966772, guid: b2028e66ea08d4f4c8e3c07cd2b12062, type: 3}
+  ExplosionPrefab: {fileID: 7005071304839069940, guid: 624ef06f725f305418c80e6cfb27fb90, type: 3}
 --- !u!50 &-3487106108823653374
 Rigidbody2D:
   serializedVersion: 4
