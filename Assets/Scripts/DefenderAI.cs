@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DefenderAI : MonoBehaviour
@@ -54,19 +55,16 @@ public class DefenderAI : MonoBehaviour
 
             if (enemyAngles.Count > 0)
             {
-                foreach (float ea in enemyAngles)
+                foreach (float ea in enemyAngles.OrderBy(x => x))
                 {
                     float angleToTurn = (playerAngle - ea);
 
-                    while (angleToTurn > 10)
+                    float mult = (angleToTurn < 0) ? -1 : 1;
+                    for (int i = 1; i < Mathf.Abs(angleToTurn); i++)
                     {
-                        float actualTurnAngle = Mathf.Max(10, angleToTurn);
-                        transform.RotateAround(playerPlanetPosition, Vector3.back, actualTurnAngle);
-                        angleToTurn = angleToTurn - actualTurnAngle;
-                        yield return new WaitForSeconds(1f);
+                        transform.RotateAround(playerPlanetPosition, Vector3.back, mult);
+                        yield return new WaitForSeconds(0.005f);
                     }
-
-                    transform.RotateAround(playerPlanetPosition, Vector3.back, angleToTurn);
 
                     playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
                     player.Fire();
