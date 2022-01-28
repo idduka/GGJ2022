@@ -24,7 +24,7 @@ public class DefenderAI : MonoBehaviour
         lastAliveEnemiesCalculation = 0;
         enemyAngles = new List<float>();
         playerPlanetPosition = playerPlanet.transform.position;
-        StartCoroutine(Ommok());
+        StartCoroutine(CalcFiringAngles());
     }
 
     void Update()
@@ -33,11 +33,11 @@ public class DefenderAI : MonoBehaviour
     }
 
     // Update is called once per frame
-    IEnumerator Ommok()
+    IEnumerator CalcFiringAngles()
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
 
             float playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
 
@@ -46,7 +46,7 @@ public class DefenderAI : MonoBehaviour
                 enemyAngles = new List<float>();
                 lastAliveEnemiesCalculation = enemySpawner.AliveEnemies.Count;
 
-                foreach (var ea in enemySpawner.AliveEnemies)
+                foreach (var ea in enemySpawner.AliveEnemies.Where(x => !x.IsPhasing))
                 {
                     float enemyAngle = AngleBetweenVector2(ea.transform.position, playerPlanetPosition);
                     enemyAngles.Add(enemyAngle);
@@ -59,11 +59,23 @@ public class DefenderAI : MonoBehaviour
                 {
                     float angleToTurn = (playerAngle - ea);
 
-                    float mult = (angleToTurn < 0) ? -1 : 1;
-                    for (int i = 1; i < Mathf.Abs(angleToTurn); i++)
+                    if (Mathf.Abs(angleToTurn) < 30)
                     {
-                        transform.RotateAround(playerPlanetPosition, Vector3.back, mult);
-                        yield return new WaitForSeconds(0.005f);
+                        float mult = (angleToTurn < 0) ? -1 : 1;
+                        for (int i = 1; i <= Mathf.Abs(angleToTurn); i++)
+                        {
+                            transform.RotateAround(playerPlanetPosition, Vector3.back, mult);
+                            yield return new WaitForSeconds(0.01f);
+                        }
+                    }
+                    else
+                    {
+                        float toTurn = angleToTurn / 30;
+                        for (int i = 1; i <= 30; i++)
+                        {
+                            transform.RotateAround(playerPlanetPosition, Vector3.back, toTurn);
+                            yield return new WaitForSeconds(0.01f);
+                        }
                     }
 
                     playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
@@ -72,8 +84,6 @@ public class DefenderAI : MonoBehaviour
 
                 enemyAngles = new List<float>();
             }
-
-            lastAliveEnemiesCalculation = enemySpawner.AliveEnemies.Count;
         }
     }
 
