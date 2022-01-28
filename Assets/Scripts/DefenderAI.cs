@@ -35,7 +35,7 @@ public class DefenderAI : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.2f);
 
             float playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
 
@@ -56,7 +56,7 @@ public class DefenderAI : MonoBehaviour
                 {
                     float angleToTurn = (playerAngle - ea);
 
-                    if (Mathf.Abs(angleToTurn) < 30)
+                    if (Mathf.Abs(angleToTurn) < 45)
                     {
                         float mult = (angleToTurn < 0) ? -1 : 1;
                         for (int i = 1; i <= Mathf.Abs(angleToTurn); i++)
@@ -67,8 +67,8 @@ public class DefenderAI : MonoBehaviour
                     }
                     else
                     {
-                        float toTurn = angleToTurn / 30;
-                        for (int i = 1; i <= 30; i++)
+                        float toTurn = angleToTurn / 45;
+                        for (int i = 1; i <= 45; i++)
                         {
                             transform.RotateAround(playerPlanetPosition, Vector3.back, toTurn);
                             yield return null;
@@ -77,6 +77,8 @@ public class DefenderAI : MonoBehaviour
 
                     playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
                     player.Fire();
+
+                    yield return new WaitForSeconds(0.1f);
                 }
 
                 enemyAngles = new List<float>();
