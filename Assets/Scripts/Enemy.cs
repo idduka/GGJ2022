@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     [Tooltip("The transition curve for phasing out and in.")]
     private AnimationCurve _phaseAnimation;
 
-    private bool _isPhasing = false;
+    public bool IsPhasing { get; private set; }
 
     private SpriteRenderer _spriteRenderer;
     
@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(_isPhasing)
+        if(IsPhasing)
         {
             return;
         }
@@ -86,7 +86,7 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator PhaseIn()
     {
-        _isPhasing = true;
+        IsPhasing = true;
         _speed = 0.0f;
         var curPhaseDuration = 0.0f;
         while (curPhaseDuration <= _totalPhaseDuration)
@@ -98,12 +98,12 @@ public class Enemy : MonoBehaviour
             curPhaseDuration += Time.deltaTime;
         }
         _speed = 0.01f;
-        _isPhasing = false;
+        IsPhasing = false;
     }
 
     public IEnumerator PhaseOut()
     {
-        _isPhasing = true;
+        IsPhasing = true;
         _speed = 0.0f;
         var curPhaseDuration = 0.0f;
         while (curPhaseDuration <= _totalPhaseDuration)
