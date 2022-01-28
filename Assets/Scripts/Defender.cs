@@ -13,6 +13,7 @@ public class Defender : MonoBehaviour
     public EnemySpawner EnemySpawner;
     public Turret TurretPrefab;
     public ParticleSystem DirtTrail;
+    public SmokeScreen SmokeScreen;
     
     // Start is called before the first frame update
     void Start()
@@ -40,21 +41,37 @@ public class Defender : MonoBehaviour
             
             var horizontalAxisName = IsPlayer1 ? "P1Horizontal" : "P2Horizontal";
             var fireAxisName = IsPlayer1 ? "P1Fire" : "P2Fire";
+            var turretAxisName = IsPlayer1 ? "P1Turret" : "P2Turret";
+            var smokeAxisName = IsPlayer1 ? "P1Smoke" : "P2Smoke";
+            var medkitName = IsPlayer1 ? "P1Medkit" : "P2Medkit";
+            var trifireAxisName = IsPlayer1 ? "P1Trifire" : "P2Trifire";
+            var empAxisName = IsPlayer1 ? "P1Emp" : "P2Emp";
+            var nukeAxisName = IsPlayer1 ? "P1Nuke" : "P2Nuke";
 
-            if (Input.GetKeyDown(IsPlayer1 ? KeyCode.S : KeyCode.K) && HomePlanet.CoinCount >= 15)
+            if (Input.GetButtonDown(turretAxisName) && HomePlanet.CoinCount >= 15)
             {
                 PlaceTurret();
                 HomePlanet.CoinCount -= 15;
             }
-            //healplanet 
-            if (Input.GetKeyDown(IsPlayer1 ? KeyCode.Alpha1 : KeyCode.Alpha7) && HomePlanet.CoinCount >= 5)
+            if (Input.GetButtonDown(smokeAxisName) && HomePlanet.CoinCount >= 15)
             {
-               
-                HomePlanet.CoinCount -= 5;
-                HomePlanet.HealDamage(2);
-                    
+                SmokeScreen.Deploy();
+                HomePlanet.CoinCount -= 15;
             }
-
+            if (Input.GetButtonDown(medkitName) && HomePlanet.CoinCount >= 15)
+            {
+                HomePlanet.CoinCount -= 15;
+                HomePlanet.HealDamage(2);
+            }
+            if (Input.GetButtonDown(trifireAxisName) && HomePlanet.CoinCount >= 15)
+            {
+            }
+            if (Input.GetButtonDown(empAxisName) && HomePlanet.CoinCount >= 15)
+            {
+            }
+            if (Input.GetButtonDown(nukeAxisName) && HomePlanet.CoinCount >= 15)
+            {
+            }
 
             var horizontalAxisValue = Input.GetAxis(horizontalAxisName);
             if (horizontalAxisValue != 0)
