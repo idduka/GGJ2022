@@ -14,14 +14,12 @@ public class DefenderAI : MonoBehaviour
     [SerializeField]
     private EnemySpawner enemySpawner;
 
-    private int lastAliveEnemiesCalculation;
     private List<float> enemyAngles;
     private Vector2 playerPlanetPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        lastAliveEnemiesCalculation = 0;
         enemyAngles = new List<float>();
         playerPlanetPosition = playerPlanet.transform.position;
         StartCoroutine(CalcFiringAngles());
@@ -37,7 +35,7 @@ public class DefenderAI : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.05f);
 
             float playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
 
@@ -64,7 +62,7 @@ public class DefenderAI : MonoBehaviour
                         for (int i = 1; i <= Mathf.Abs(angleToTurn); i++)
                         {
                             transform.RotateAround(playerPlanetPosition, Vector3.back, mult);
-                            yield return new WaitForSeconds(0.01f);
+                            yield return null;
                         }
                     }
                     else
@@ -73,7 +71,7 @@ public class DefenderAI : MonoBehaviour
                         for (int i = 1; i <= 30; i++)
                         {
                             transform.RotateAround(playerPlanetPosition, Vector3.back, toTurn);
-                            yield return new WaitForSeconds(0.01f);
+                            yield return null;
                         }
                     }
 
