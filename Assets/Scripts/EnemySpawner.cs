@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -25,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
     private float _respawnDelay;
     
     private Vector2 _topLeftCorner;
+    public bool IsInEMPMode;
 
     public List<Enemy> AliveEnemies { get; set; } = new List<Enemy>();
 
@@ -69,5 +71,17 @@ public class EnemySpawner : MonoBehaviour
         var topLeftCorner = new Vector2(-halfSize.x, halfSize.y);
         
         return topLeftCorner + baseSpawnPosition;
+    }
+
+    public IEnumerator EnterEMPState(float seconds)
+    {
+        if (!IsInEMPMode)
+        {
+            IsInEMPMode = true;
+            AliveEnemies = AliveEnemies.Select(x => { x.IsBeingAffectedByEMP = true; return x; }).ToList();
+            yield return new WaitForSeconds(seconds);
+            AliveEnemies = AliveEnemies.Select(x => { x.IsBeingAffectedByEMP = false; return x; }).ToList();
+            IsInEMPMode = false;
+        }        
     }
 }

@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
 
     public bool IsPhasing { get; private set; }
 
+    public bool IsBeingAffectedByEMP { get; set; }
+
     private SpriteRenderer _spriteRenderer;
     
     public Planet TargetPlanet { get; set; }
@@ -55,7 +57,10 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, TargetPlanet.transform.position, _speed);
+        if (!IsBeingAffectedByEMP)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, TargetPlanet.transform.position, _speed);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

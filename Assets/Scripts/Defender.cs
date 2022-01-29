@@ -78,6 +78,11 @@ public class Defender : MonoBehaviour
             }
             if (Input.GetButtonDown(empAxisName) && HomePlanet.CoinCount >= 15)
             {
+                if (!EnemySpawner.IsInEMPMode)
+                {
+                    HomePlanet.CoinCount -= 15;
+                    StartCoroutine(EnemySpawner.EnterEMPState(5f));
+                }
             }
             if (Input.GetButtonDown(nukeAxisName) && HomePlanet.CoinCount >= 15)
             {
