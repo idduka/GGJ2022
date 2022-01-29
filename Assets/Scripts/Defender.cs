@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -81,6 +81,8 @@ public class Defender : MonoBehaviour
             }
             if (Input.GetButtonDown(nukeAxisName) && HomePlanet.CoinCount >= 15)
             {
+                Nuke();
+                HomePlanet.CoinCount -= 15;
             }
 
             var horizontalAxisValue = Input.GetAxis(horizontalAxisName);
@@ -151,5 +153,13 @@ public class Defender : MonoBehaviour
         _trifireMode = true;
         yield return new WaitForSeconds(10.0f);
         _trifireMode = false;
+    }
+
+    private void Nuke()
+    {
+        while(EnemySpawner.AliveEnemies.Count != 0)
+        {
+            EnemySpawner.AliveEnemies.First().Die();
+        }
     }
 }
