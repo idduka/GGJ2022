@@ -25,7 +25,22 @@ public class Enemy : MonoBehaviour
 
     public bool IsPhasing { get; private set; }
 
-    public bool IsBeingAffectedByEMP { get; set; }
+    public bool IsBeingAffectedByEMP
+    {
+        get
+        {
+            return _isBeingAffectedByEMP;
+        }
+        set
+        {
+            if(value == true)
+            {
+                SparksEffect.Play();
+            }
+            _isBeingAffectedByEMP = value;
+        }
+    }
+    private bool _isBeingAffectedByEMP;
 
     private SpriteRenderer _spriteRenderer;
     
@@ -40,6 +55,8 @@ public class Enemy : MonoBehaviour
     public GameObject GibPrefab;
 
     public GameObject ExplosionPrefab;
+
+    public ParticleSystem SparksEffect;
 
     private void Start()
     {

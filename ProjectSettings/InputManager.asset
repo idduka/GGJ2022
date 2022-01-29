@@ -582,6 +582,22 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
+    m_Name: P1Trifire
+    descriptiveName: Player 1 trifire deploy (alt)
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: joystick 1 button 8
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
     m_Name: P2Trifire
     descriptiveName: Player 2 trifire deploy
     descriptiveNegativeName: 
@@ -589,6 +605,22 @@ InputManager:
     positiveButton: 8
     altNegativeButton: 
     altPositiveButton: joystick 2 button 9
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: P2Trifire
+    descriptiveName: Player 2 trifire deploy (alt)
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: joystick 2 button 8
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
