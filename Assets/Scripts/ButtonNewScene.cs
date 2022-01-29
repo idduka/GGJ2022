@@ -7,25 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class ButtonNewScene : MonoBehaviour
 {
-
-
     // Start is called before the first frame update
 
     public void NextScene()
-    { 
-               
-            { 
-        
-            
-           
-            SceneManager.LoadScene("GameMain",LoadSceneMode.Single);
+    {
+        {
+            SceneManager.LoadScene("GameMain", LoadSceneMode.Single);
             SceneManager.sceneLoaded += SceneManager_sceneLoaded;
         }
     }
 
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-
         Scene s = SceneManager.GetSceneByName("GameMain");
         GameObject[] gameObjects = s.GetRootGameObjects();
         GameObject player;
@@ -33,22 +26,17 @@ public class ButtonNewScene : MonoBehaviour
         {
             Debug.Log(go.name);
             if (go.name == "Player1Zone")
-
             {
                 DefenderAI AIscript;
                 AIscript = go.GetComponentInChildren<DefenderAI>();
                 AIscript.enabled = false;
-               
             }
             if (go.name == "Player2Zone")
-
             {
                 DefenderAI AIscript;
                 AIscript = go.GetComponentInChildren<DefenderAI>();
                 AIscript.enabled = false;
-               
             }
-
         }
     }
 }
