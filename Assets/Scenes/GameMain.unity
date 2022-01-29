@@ -2094,6 +2094,158 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbabf3b0161e9c469ba10dd50d8b2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1573495723
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5774989468445209976}
+    m_Modifications:
+    - target: {fileID: 1573495725, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: PlayerPlanet
+      value: 
+      objectReference: {fileID: 110614400}
+    - target: {fileID: 2494602921519719198, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_Name
+      value: PowerUpController Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+--- !u!114 &1573495724 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1573495725, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+  m_PrefabInstance: {fileID: 1573495723}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae27f18f86e3455c8911ba41a3999c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &1590993734
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1129290509}
+    m_Modifications:
+    - target: {fileID: 1573495725, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: PlayerPlanet
+      value: 
+      objectReference: {fileID: 1190018689}
+    - target: {fileID: 2494602921519719198, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_Name
+      value: PowerUpController Player 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.494
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494602921519719199, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+--- !u!114 &1590993735 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1573495725, guid: 3fcab1f971995ce4ba4876cfb21d8bf0, type: 3}
+  m_PrefabInstance: {fileID: 1590993734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae27f18f86e3455c8911ba41a3999c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1607402626
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,6 +2465,10 @@ PrefabInstance:
       propertyPath: EnemySpawner
       value: 
       objectReference: {fileID: 1542135671}
+    - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
+      propertyPath: PowerUpController
+      value: 
+      objectReference: {fileID: 1590993735}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
 --- !u!1 &1720408027 stripped
@@ -2439,7 +2595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44baeec4e6e010448a7881bebd368d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPlanet: {fileID: 1190018689}
   player: {fileID: 1720408029}
   enemySpawner: {fileID: 1542135671}
   _gameState: {fileID: 11400000, guid: 2e40c394667cb3f408f949551d1791f3, type: 2}
@@ -2962,6 +3117,10 @@ PrefabInstance:
       propertyPath: EnemySpawner
       value: 
       objectReference: {fileID: 507171867}
+    - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
+      propertyPath: PowerUpController
+      value: 
+      objectReference: {fileID: 1573495724}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
 --- !u!1 &6048695526424587224 stripped
@@ -3158,7 +3317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44baeec4e6e010448a7881bebd368d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPlanet: {fileID: 110614400}
   player: {fileID: 6048695526424587228}
   enemySpawner: {fileID: 507171867}
   _gameState: {fileID: 11400000, guid: 2e40c394667cb3f408f949551d1791f3, type: 2}

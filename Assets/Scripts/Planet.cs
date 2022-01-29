@@ -85,7 +85,7 @@ public class Planet : MonoBehaviour
     private void Start()
     {
         _healthBar.SetMaxValue(_hitPoints);
-        CoinCount = 1000;
+        // CoinCount = 1000;
     }
 
     // Update is called once per frame

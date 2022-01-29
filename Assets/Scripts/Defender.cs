@@ -15,13 +15,14 @@ public class Defender : MonoBehaviour
     public ParticleSystem DirtTrail;
     public SmokeScreen SmokeScreen;
     public ParticleSystem NukeEffect;
+    public PowerUpController PowerUpController;
 
-    public int TurretCost { get { return 15; } }
-    public int SmokeCost { get { return 15; } }
-    public int HealCost { get { return 15; } }
-    public int TrifireCost { get { return 15; } }
-    public int EMPCost { get { return 15; } }
-    public int NukeCost { get { return 15; } }
+    public int TurretCost { get { return PowerUpController.TurretCost; } }
+    public int SmokeCost { get { return PowerUpController.CloudCost; } }
+    public int HealCost { get { return PowerUpController.HealthCost; } }
+    public int TrifireCost { get { return PowerUpController.TriShotCost; } }
+    public int EMPCost { get { return PowerUpController.EmpCost; } }
+    public int NukeCost { get { return PowerUpController.NukeCost; } }
 
     private bool _trifireMode = false;
     
@@ -58,44 +59,44 @@ public class Defender : MonoBehaviour
             var empAxisName = IsPlayer1 ? "P1Emp" : "P2Emp";
             var nukeAxisName = IsPlayer1 ? "P1Nuke" : "P2Nuke";
 
-            if (Input.GetButtonDown(turretAxisName) && HomePlanet.CoinCount >= TurretCost)
+            if (Input.GetButtonDown(turretAxisName) && HomePlanet.CoinCount >= PowerUpController.TurretCost)
             {
                 PlaceTurret();
-                HomePlanet.CoinCount -= TurretCost;
+                HomePlanet.CoinCount -= PowerUpController.TurretCost;
             }
-            if (Input.GetButtonDown(smokeAxisName) && HomePlanet.CoinCount >= SmokeCost)
+            if (Input.GetButtonDown(smokeAxisName) && HomePlanet.CoinCount >= PowerUpController.CloudCost)
             {
                 SmokeScreen.Deploy();
-                HomePlanet.CoinCount -= SmokeCost;
+                HomePlanet.CoinCount -= PowerUpController.CloudCost;
             }
-            if (Input.GetButtonDown(medkitName) && HomePlanet.CoinCount >= HealCost)
+            if (Input.GetButtonDown(medkitName) && HomePlanet.CoinCount >= PowerUpController.HealthCost)
             {
                 if (HomePlanet._hitPoints < 99)
                 {
-                    HomePlanet.CoinCount -= HealCost;
+                    HomePlanet.CoinCount -= PowerUpController.HealthCost;
                     HomePlanet.HealDamage();
                 }
             }
-            if (Input.GetButtonDown(trifireAxisName) && HomePlanet.CoinCount >= TrifireCost)
+            if (Input.GetButtonDown(trifireAxisName) && HomePlanet.CoinCount >= PowerUpController.TriShotCost)
             {
                 if (!_trifireMode)
                 {
-                    HomePlanet.CoinCount -= TrifireCost;
+                    HomePlanet.CoinCount -= PowerUpController.TriShotCost;
                     StartCoroutine(EnterTrifireMode());
                 }
             }
-            if (Input.GetButtonDown(empAxisName) && HomePlanet.CoinCount >= EMPCost)
+            if (Input.GetButtonDown(empAxisName) && HomePlanet.CoinCount >= PowerUpController.EmpCost)
             {
                 if (!EnemySpawner.IsInEMPMode)
                 {
-                    HomePlanet.CoinCount -= EMPCost;
+                    HomePlanet.CoinCount -= PowerUpController.EmpCost;
                     StartCoroutine(EnemySpawner.EnterEMPState(5f));
                 }
             }
-            if (Input.GetButtonDown(nukeAxisName) && HomePlanet.CoinCount >= NukeCost)
+            if (Input.GetButtonDown(nukeAxisName) && HomePlanet.CoinCount >= PowerUpController.NukeCost)
             {
                 StartCoroutine(Nuke());
-                HomePlanet.CoinCount -= NukeCost;
+                HomePlanet.CoinCount -= PowerUpController.NukeCost;
             }
 
             var horizontalAxisValue = Input.GetAxis(horizontalAxisName);
