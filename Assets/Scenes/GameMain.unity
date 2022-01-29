@@ -2436,7 +2436,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: fb473bb1cba11c942892274c49e37068, type: 3}
     - target: {fileID: 3666382940915311763, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6479820444075433509, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
       propertyPath: m_Name
@@ -3093,7 +3093,11 @@ PrefabInstance:
     - target: {fileID: 3666382940915311763, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2b4188e2e956933458f4d0e04bddab05, type: 3}
+      objectReference: {fileID: 21300000, guid: 6baf7aa477bcad34abbb5f558c44b3f2, type: 3}
+    - target: {fileID: 3666382940915311763, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6479820444075433509, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
       propertyPath: m_Name
       value: Player1Defender
