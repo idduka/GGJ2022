@@ -14,20 +14,47 @@ public class DefenderAI : MonoBehaviour
     [SerializeField]
     private EnemySpawner enemySpawner;
 
+    private List<string> validDifficulties = new List<string> { "easy", "medium", "hard" };
+    private string difficulty;
+
     private List<float> enemyAngles;
     private Vector2 playerPlanetPosition;
+
+    private WaitForSeconds calcFiringAnglesStep;
+    private WaitForSeconds pauseBetweenEnemiesStep;
 
     // Start is called before the first frame update
     void Start()
     {
+        difficulty = "hard";
         enemyAngles = new List<float>();
-        playerPlanetPosition = playerPlanet.transform.position;
-        StartCoroutine(CalcFiringAngles());
+        playerPlanetPosition = playerPlanet.transform.position;        
     }
 
-    void Update()
+    public void SetDifficulty(string difficulty)
     {
+        if (validDifficulties.Contains(difficulty))
+        {
+            this.difficulty = difficulty;
+        }
 
+        if (this.difficulty == "easy")
+        {
+            calcFiringAnglesStep = new WaitForSeconds(1f);
+            pauseBetweenEnemiesStep = new WaitForSeconds(0.5f);
+        }
+        else if (this.difficulty == "medium")
+        {
+            calcFiringAnglesStep = new WaitForSeconds(0.6f);
+            pauseBetweenEnemiesStep = new WaitForSeconds(0.2f);
+        }
+        else if (this.difficulty == "hard")
+        {
+            calcFiringAnglesStep = new WaitForSeconds(0.2f);
+            pauseBetweenEnemiesStep = new WaitForSeconds(0.1f);
+        }
+
+        StartCoroutine(CalcFiringAngles());
     }
 
     // Update is called once per frame
@@ -35,7 +62,7 @@ public class DefenderAI : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return calcFiringAnglesStep;
 
             float playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
 
@@ -78,7 +105,7 @@ public class DefenderAI : MonoBehaviour
                     playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
                     player.Fire();
 
-                    yield return new WaitForSeconds(0.1f);
+                    yield return pauseBetweenEnemiesStep;
                 }
 
                 enemyAngles = new List<float>();
