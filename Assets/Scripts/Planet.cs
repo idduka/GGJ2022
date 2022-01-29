@@ -60,7 +60,7 @@ public class Planet : MonoBehaviour
 
     public void HealDamage()
     {
-        _hitPoints += 2;
+        _hitPoints += 15;
         _healthBar.SetValue(_hitPoints);
         SetSprite();
     }

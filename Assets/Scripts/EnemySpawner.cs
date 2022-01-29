@@ -44,22 +44,23 @@ public class EnemySpawner : MonoBehaviour
         _topLeftCorner = new Vector2(-halfSize.x, halfSize.y);
     }
 
-    public void SpawnEnemy(Vector2 spawnPoint)
+    public void SpawnEnemy(Vector2 spawnPoint, float speedChange)
     {
         var createdEnemy = Instantiate(_enemyPrefab, _playerZone);
         createdEnemy.transform.localPosition = _topLeftCorner + spawnPoint;
         var enemyComponent = createdEnemy.GetComponent<Enemy>();
         enemyComponent.TargetPlanet = _targetPlanet;
         enemyComponent.EnemySpawner = this;
+        enemyComponent._speed += speedChange;
         AliveEnemies.Add(enemyComponent);
     }
 
-    public void SpawnEnemyAtOtherSide(Vector2 relativePosition)
+    public void SpawnEnemyAtOtherSide(Vector2 relativePosition, float speed)
     {
-        StartCoroutine(_otherEnemySpawner.RespawnEnemy(relativePosition));
+        StartCoroutine(_otherEnemySpawner.RespawnEnemy(relativePosition, speed));
     }
     
-    public IEnumerator RespawnEnemy(Vector2 relativePosition)
+    public IEnumerator RespawnEnemy(Vector2 relativePosition, float speed)
     {
         if (_gameState.IsGameOver)
         {
@@ -84,6 +85,7 @@ public class EnemySpawner : MonoBehaviour
         enemyComponent.TargetPlanet = _targetPlanet;
         enemyComponent.EnemySpawner = this;
         enemyComponent.IsRespawn = true;
+        enemyComponent._speed = speed;
         enemyComponent.ChangeSprite();
         AliveEnemies.Add(enemyComponent);
     }

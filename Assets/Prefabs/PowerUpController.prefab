@@ -563,8 +563,8 @@ MonoBehaviour:
   PlayerPlanet: {fileID: 0}
   TurretCost: 15
   HealthCost: 15
-  TriShotCost: 15
-  NukeCost: 15
-  EmpCost: 15
-  CloudCost: 15
+  TriShotCost: 10
+  NukeCost: 30
+  EmpCost: 20
+  CloudCost: 25
   _gameState: {fileID: 11400000, guid: 2e40c394667cb3f408f949551d1791f3, type: 2}

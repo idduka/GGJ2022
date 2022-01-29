@@ -41,6 +41,9 @@ public class EnemyWaveController : MonoBehaviour
     [SerializeField]
     [Tooltip("The text field that displays the wave countdown.")]
     private Text _nextWaveTextField;
+
+    [SerializeField]
+    private float _maxSpeedChange;
     
     private int _waveCount = 1;
     
@@ -102,6 +105,8 @@ public class EnemyWaveController : MonoBehaviour
 
             foreach (var spawnPoint in randomSpawnList)
             {
+                var speedChange = Random.Range(0, _maxSpeedChange);
+                
                 foreach (var enemySpawner in _enemySpawners)
                 {
                     if (_gameState.IsGameOver)
@@ -109,7 +114,7 @@ public class EnemyWaveController : MonoBehaviour
                         yield break;
                     }
                     
-                    enemySpawner.SpawnEnemy(spawnPoint);
+                    enemySpawner.SpawnEnemy(spawnPoint, speedChange);
                 }
                 
                 yield return new WaitForSeconds(0.3f);

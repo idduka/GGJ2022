@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
     [Tooltip("The speed at which the enemy flies towards the planet")]
-    private float _speed;
+    public float _speed;
 
     [SerializeField]
     [Tooltip("The sprite that is applied when the enemy respawns on the other player side.")]
@@ -111,6 +110,7 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator PhaseOut()
     {
+        var originalSpeed = _speed;
         IsPhasing = true;
         _speed = 0.0f;
         var curPhaseDuration = 0.0f;
@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
             yield return null;
             curPhaseDuration += Time.deltaTime;
         }
-        EnemySpawner.SpawnEnemyAtOtherSide(transform.localPosition);
+        EnemySpawner.SpawnEnemyAtOtherSide(transform.localPosition, originalSpeed);
         Destroy(gameObject);
     }
 
