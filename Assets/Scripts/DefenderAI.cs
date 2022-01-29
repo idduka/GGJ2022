@@ -28,10 +28,16 @@ public class DefenderAI : MonoBehaviour
 
     private int turretsPlaced = 0;
     private int maxTurrets = 6;
+    private System.DateTime timeOfLastNuke;
+    private System.DateTime timeOfLastSmoke;
+    private System.DateTime timeOfLastEmp;
 
     // Start is called before the first frame update
     void Start()
     {
+        timeOfLastNuke = System.DateTime.Now;
+        timeOfLastSmoke = System.DateTime.Now;
+        timeOfLastEmp = System.DateTime.Now;
         enemyAngles = new List<float>();
         playerPlanetPosition = player.HomePlanet.transform.position;
 
@@ -138,15 +144,73 @@ public class DefenderAI : MonoBehaviour
         {
             yield return calcFiringAnglesStep;
 
-            int money = player.HomePlanet.CoinCount;
-
-            if (turretsPlaced < maxTurrets && money > player.TurretCost)
+            if (player.EnemySpawner.AliveEnemies != null
+                && player.EnemySpawner.AliveEnemies.Count > 10
+                && turretsPlaced < maxTurrets 
+                && player.HomePlanet.CoinCount > player.TurretCost)
             {
                 turretsPlaced++;
 
                 float angle = 360 / maxTurrets * turretsPlaced;
                 float playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
                 transform.RotateAround(playerPlanetPosition, Vector3.back, playerAngle);
+                transform.RotateAround(playerPlanetPosition, Vector3.back, angle);
+
+                player.HomePlanet.CoinCount -= player.TurretCost;
+                player.PlaceTurret();
+
+                yield return null;
+            }
+
+            if (player.HomePlanet._hitPoints < 20
+                && player.HomePlanet.CoinCount > player.HealCost)
+            {
+                player.HomePlanet.CoinCount -= player.HealCost;
+                player.HomePlanet.HealDamage();
+
+                yield return null;
+            }
+
+            if (player.EnemySpawner.AliveEnemies != null 
+                && player.EnemySpawner.AliveEnemies.Count > 30
+                && player.HomePlanet.CoinCount > player.NukeCost
+                && (System.DateTime.Now - timeOfLastNuke).TotalSeconds > 30)
+            {
+                player.HomePlanet.CoinCount -= player.NukeCost;
+                StartCoroutine(player.Nuke());
+                timeOfLastNuke = System.DateTime.Now;
+
+                yield return null;
+            }
+
+            if ((player?.EnemySpawner?._otherEnemySpawner?.AliveEnemies?.Count ?? 0) > 20
+                && player.HomePlanet.CoinCount > player.SmokeCost
+                && (System.DateTime.Now - timeOfLastSmoke).TotalSeconds > 30)
+            {
+                if (Random.Range(0, 1f) < 0.3f)
+                {
+                    player.HomePlanet.CoinCount -= player.SmokeCost;
+                    player.SmokeScreen.Deploy();
+                    timeOfLastSmoke = System.DateTime.Now;
+
+                    yield return null;
+                }
+            }
+
+            if (player.EnemySpawner.AliveEnemies != null
+                && player.EnemySpawner.AliveEnemies.Count > 10
+                && player.EnemySpawner.AliveEnemies.ToDictionary(k => k, v => Vector2.Distance(transform.position, v.transform.position)).OrderBy(d => d.Value).FirstOrDefault().Value < 2
+                && player.HomePlanet.CoinCount > player.EMPCost
+                && (System.DateTime.Now - timeOfLastEmp).TotalSeconds > 30)
+            {
+                if (Random.Range(0, 1f) < 0.3f)
+                {
+                    player.HomePlanet.CoinCount -= player.EMPCost;
+                    StartCoroutine(player.EnemySpawner.EnterEMPState(5f));
+                    timeOfLastEmp = System.DateTime.Now;
+
+                    yield return null;
+                }
             }
         }
     }

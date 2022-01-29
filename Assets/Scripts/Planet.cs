@@ -14,7 +14,7 @@ public class Planet : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The starting hitpoints of the planet")]
-   public int _hitPoints;
+    public int _hitPoints;
 
     [SerializeField]
     [Tooltip("The sprite that is displayed when the planet is slightly damaged.")]
@@ -57,20 +57,14 @@ public class Planet : MonoBehaviour
     public int CoinCount { get; set; }
     
     private PlanetState _planetState = PlanetState.Healthy;
-    //clintsc
-    public void HealDamage(int damage)
+
+    public void HealDamage()
     {
-        _hitPoints += damage;
-
+        _hitPoints += 2;
         _healthBar.SetValue(_hitPoints);
-       
-
-
         SetSprite();
     }
 
-
-    //
     public void ApplyDamage(int damage)
     {
         _hitPoints -= damage;

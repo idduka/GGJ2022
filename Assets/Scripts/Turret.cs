@@ -15,10 +15,10 @@ public class Turret : MonoBehaviour
     [SerializeField]
     [Tooltip("The projectile prefab.")]
     private Projectile _projectilePrefab;
-    
+
     public EnemySpawner EnemySpawner { private get; set; }
 
-    private int _turretLIfe = 5;
+    private int _turretAmmo = 30;
 
     private void Start()
     {
@@ -34,35 +34,36 @@ public class Turret : MonoBehaviour
                 yield return null;
                 continue;
             }
-            
+
             Debug.Log("Enemy detected");
-            
+
             var enemies = EnemySpawner.AliveEnemies;
 
             var closestEnemy =
                 enemies.ToDictionary(k => k, v => Vector2.Distance(transform.position, v.transform.position)).OrderBy(d => d.Value).FirstOrDefault().Key;
-            
+
             var targetPoint = closestEnemy.transform.position - transform.position;
-            
+
             var rotZ = Mathf.Atan2(targetPoint.y, targetPoint.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90);
 
             Fire();
-            _turretLIfe -=1;
-            Debug.Log(_turretLIfe.ToString());
-            if (_turretLIfe == 0)
-            {
-                DestroyTower();
+            _turretAmmo -= 1;
             
+            if (_turretAmmo == 0)
+            {
+                DestroyTurret();
             }
 
             yield return new WaitForSeconds(_fireRate);
         }
     }
-    void DestroyTower ()
+
+    void DestroyTurret()
     {
         Destroy(gameObject);
     }
+
     private void Fire()
     {
         AudioSource firesound = GetComponent<AudioSource>();

@@ -73,7 +73,7 @@ public class Defender : MonoBehaviour
                 if (HomePlanet._hitPoints < 99)
                 {
                     HomePlanet.CoinCount -= HealCost;
-                    HomePlanet.HealDamage(2);
+                    HomePlanet.HealDamage();
                 }
             }
             if (Input.GetButtonDown(trifireAxisName) && HomePlanet.CoinCount >= TrifireCost)
@@ -152,7 +152,7 @@ public class Defender : MonoBehaviour
             transform.rotation * Quaternion.AngleAxis(-20, Vector3.back));
     }
 
-    private void PlaceTurret()
+    public void PlaceTurret()
     {
         var turret = Instantiate(TurretPrefab,
             transform.position + (transform.rotation * Vector3.up * 2),
@@ -168,7 +168,7 @@ public class Defender : MonoBehaviour
         _trifireMode = false;
     }
 
-    private IEnumerator Nuke()
+    public IEnumerator Nuke()
     {
         NukeEffect.Play();
         yield return new WaitForSeconds(2.0f);

@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The enemy spawner of the other player area.")]
-    private EnemySpawner _otherEnemySpawner;
+    public EnemySpawner _otherEnemySpawner;
 
     [SerializeField]
     [Tooltip("The number of seconds that shall be waited before the enemy respawns on the other side.")]
