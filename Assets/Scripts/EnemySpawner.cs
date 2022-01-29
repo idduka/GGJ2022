@@ -28,6 +28,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     [Tooltip("The phase effect game object.")]
     private GameObject _phaseEffectPrefab;
+
+    [SerializeField]
+    [Tooltip("The game state object.")]
+    private GameState _gameState;
     
     private Vector2 _topLeftCorner;
     public bool IsInEMPMode;
@@ -57,12 +61,22 @@ public class EnemySpawner : MonoBehaviour
     
     public IEnumerator RespawnEnemy(Vector2 relativePosition)
     {
+        if (_gameState.IsGameOver)
+        {
+            yield break;
+        }
+        
         var phaseEffect = Instantiate(_phaseEffectPrefab, _playerZone);
         phaseEffect.transform.localPosition = relativePosition;
         
         yield return new WaitForSeconds(_respawnDelay);
         
         Destroy(phaseEffect);
+        
+        if (_gameState.IsGameOver)
+        {
+            yield break;
+        }
         
         var createdEnemy = Instantiate(_enemyPrefab, _playerZone);
         createdEnemy.transform.localPosition = relativePosition;

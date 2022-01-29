@@ -169,6 +169,12 @@ public class EnemyWaveController : MonoBehaviour
 
         while (remainingSeconds > 0)
         {
+            if (_gameState.IsGameOver)
+            {
+                _nextWaveTextField.enabled = false;
+                yield break;
+            }
+            
             Debug.Log($"Remaining seconds: {remainingSeconds}");
             _nextWaveTextField.text = $"Next wave in: {remainingSeconds}";
             remainingSeconds--;

@@ -50,4 +50,5 @@ MonoBehaviour:
   _otherEnemySpawner: {fileID: 0}
   _respawnDelay: 1.5
   _phaseEffectPrefab: {fileID: 1427276267102109387, guid: 05b32a631861f554c8fb0c2f3f5009ad, type: 3}
+  _gameState: {fileID: 11400000, guid: 2e40c394667cb3f408f949551d1791f3, type: 2}
   IsInEMPMode: 0
