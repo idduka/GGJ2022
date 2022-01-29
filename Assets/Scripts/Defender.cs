@@ -14,6 +14,7 @@ public class Defender : MonoBehaviour
     public Turret TurretPrefab;
     public ParticleSystem DirtTrail;
     public SmokeScreen SmokeScreen;
+    public ParticleSystem NukeEffect;
 
     private bool _trifireMode = false;
     
@@ -86,7 +87,7 @@ public class Defender : MonoBehaviour
             }
             if (Input.GetButtonDown(nukeAxisName) && HomePlanet.CoinCount >= 15)
             {
-                Nuke();
+                StartCoroutine(Nuke());
                 HomePlanet.CoinCount -= 15;
             }
 
@@ -160,8 +161,10 @@ public class Defender : MonoBehaviour
         _trifireMode = false;
     }
 
-    private void Nuke()
+    private IEnumerator Nuke()
     {
+        NukeEffect.Play();
+        yield return new WaitForSeconds(2.0f);
         while(EnemySpawner.AliveEnemies.Count != 0)
         {
             EnemySpawner.AliveEnemies.First().Die();

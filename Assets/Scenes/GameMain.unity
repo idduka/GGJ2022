@@ -1281,6 +1281,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &946702635 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2118354945891276280, guid: 9e43697ab8916e24a8b3adada2f4edbe, type: 3}
+  m_PrefabInstance: {fileID: 1962126803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &964716870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,6 +1696,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402026593}
   m_CullTransparentMesh: 1
+--- !u!198 &1409401316 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2118354945891276280, guid: 9e43697ab8916e24a8b3adada2f4edbe, type: 3}
+  m_PrefabInstance: {fileID: 8693116848538501235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1458126694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2300,6 +2310,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1190018689}
     - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
+      propertyPath: NukeEffect
+      value: 
+      objectReference: {fileID: 946702635}
+    - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
       propertyPath: SmokeScreen
       value: 
       objectReference: {fileID: 1208425141}
@@ -2524,6 +2538,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1129290509}
     m_Modifications:
+    - target: {fileID: 2118354945891276280, guid: 9e43697ab8916e24a8b3adada2f4edbe, type: 3}
+      propertyPath: lengthInSec
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118354945891276280, guid: 9e43697ab8916e24a8b3adada2f4edbe, type: 3}
+      propertyPath: SizeModule.curve.scalar
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118354945891276280, guid: 9e43697ab8916e24a8b3adada2f4edbe, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303042039336089190, guid: 9e43697ab8916e24a8b3adada2f4edbe, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8693116848512571148, guid: 9e43697ab8916e24a8b3adada2f4edbe, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2929,6 +2959,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 110614400}
     - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
+      propertyPath: NukeEffect
+      value: 
+      objectReference: {fileID: 1409401316}
+    - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
       propertyPath: SmokeScreen
       value: 
       objectReference: {fileID: 2001839037}
@@ -3223,6 +3257,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5774989468445209976}
     m_Modifications:
+    - target: {fileID: 2118354945891276280, guid: 9e43697ab8916e24a8b3adada2f4edbe, type: 3}
+      propertyPath: lengthInSec
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118354945891276280, guid: 9e43697ab8916e24a8b3adada2f4edbe, type: 3}
+      propertyPath: SizeModule.curve.scalar
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118354945891276280, guid: 9e43697ab8916e24a8b3adada2f4edbe, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303042039336089190, guid: 9e43697ab8916e24a8b3adada2f4edbe, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8693116848512571148, guid: 9e43697ab8916e24a8b3adada2f4edbe, type: 3}
       propertyPath: m_RootOrder
       value: 2
