@@ -24,6 +24,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     [Tooltip("The number of seconds that shall be waited before the enemy respawns on the other side.")]
     private float _respawnDelay;
+
+    [SerializeField]
+    [Tooltip("The phase effect game object.")]
+    private GameObject _phaseEffectPrefab;
     
     private Vector2 _topLeftCorner;
     public bool IsInEMPMode;
@@ -53,7 +57,12 @@ public class EnemySpawner : MonoBehaviour
     
     public IEnumerator RespawnEnemy(Vector2 relativePosition)
     {
+        var phaseEffect = Instantiate(_phaseEffectPrefab, _playerZone);
+        phaseEffect.transform.localPosition = relativePosition;
+        
         yield return new WaitForSeconds(_respawnDelay);
+        
+        Destroy(phaseEffect);
         
         var createdEnemy = Instantiate(_enemyPrefab, _playerZone);
         createdEnemy.transform.localPosition = relativePosition;
@@ -63,14 +72,6 @@ public class EnemySpawner : MonoBehaviour
         enemyComponent.IsRespawn = true;
         enemyComponent.ChangeSprite();
         AliveEnemies.Add(enemyComponent);
-    }
-
-    private Vector2 CalculateActualSpawnPosition(Vector2 baseSpawnPosition)
-    {
-        var halfSize = _playerZone.rect.size / 2;
-        var topLeftCorner = new Vector2(-halfSize.x, halfSize.y);
-        
-        return topLeftCorner + baseSpawnPosition;
     }
 
     public IEnumerator EnterEMPState(float seconds)

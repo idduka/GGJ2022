@@ -660,10 +660,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5774989468445209976}
     - target: {fileID: 8585749969746330297, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
-      propertyPath: _respawnDelay
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8585749969746330297, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
       propertyPath: _targetPlanet
       value: 
       objectReference: {fileID: 110614400}
@@ -2077,10 +2073,6 @@ PrefabInstance:
       propertyPath: _playerZone
       value: 
       objectReference: {fileID: 1129290509}
-    - target: {fileID: 8585749969746330297, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
-      propertyPath: _respawnDelay
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8585749969746330297, guid: 7b8a4219a6e174e428ef3f0c7b199eba, type: 3}
       propertyPath: _targetPlanet
       value: 
