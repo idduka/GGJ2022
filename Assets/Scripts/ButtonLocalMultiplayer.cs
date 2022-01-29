@@ -11,7 +11,7 @@ public class ButtonLocalMultiplayer : MonoBehaviour
 
     public void StartLocalMultiplayer()
     {
-        SceneManager.LoadScene("DifficultySelection", LoadSceneMode.Single);
+        SceneManager.LoadScene("GameMain", LoadSceneMode.Single);
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
     }
 
