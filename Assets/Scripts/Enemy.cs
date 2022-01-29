@@ -88,15 +88,7 @@ public class Enemy : MonoBehaviour
         if (projectile != null)
         {
             Destroy(projectile.gameObject);
-            if (!IsRespawn)
-            {
-                TargetPlanet.CoinCount++;
-                StartCoroutine(PhaseOut());
-            }
-            else
-            {
-                Die();
-            }
+            Die();
         }
     }
 
@@ -131,17 +123,22 @@ public class Enemy : MonoBehaviour
             curPhaseDuration += Time.deltaTime;
         }
         EnemySpawner.SpawnEnemyAtOtherSide(transform.localPosition);
-        Die();
+        Destroy(gameObject);
     }
 
-    private void Die()
+    public void Die()
     {
         // Debug.Log($"Killed enemy position: {transform.localPosition.x}, {transform.localPosition.y}");
         EnemySpawner.AliveEnemies.Remove(this);
         if (IsRespawn)
         {
             Instantiate(GibPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        else
+        {
+            TargetPlanet.CoinCount++;
+            StartCoroutine(PhaseOut());
+        }
     }
 }
