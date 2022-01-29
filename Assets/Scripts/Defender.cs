@@ -16,6 +16,13 @@ public class Defender : MonoBehaviour
     public SmokeScreen SmokeScreen;
     public ParticleSystem NukeEffect;
 
+    public int TurretCost { get { return 15; } }
+    public int SmokeCost { get { return 15; } }
+    public int HealCost { get { return 15; } }
+    public int TrifireCost { get { return 15; } }
+    public int EMPCost { get { return 15; } }
+    public int NukeCost { get { return 15; } }
+
     private bool _trifireMode = false;
     
     // Start is called before the first frame update
@@ -51,44 +58,44 @@ public class Defender : MonoBehaviour
             var empAxisName = IsPlayer1 ? "P1Emp" : "P2Emp";
             var nukeAxisName = IsPlayer1 ? "P1Nuke" : "P2Nuke";
 
-            if (Input.GetButtonDown(turretAxisName) && HomePlanet.CoinCount >= 15)
+            if (Input.GetButtonDown(turretAxisName) && HomePlanet.CoinCount >= TurretCost)
             {
                 PlaceTurret();
-                HomePlanet.CoinCount -= 15;
+                HomePlanet.CoinCount -= TurretCost;
             }
-            if (Input.GetButtonDown(smokeAxisName) && HomePlanet.CoinCount >= 15)
+            if (Input.GetButtonDown(smokeAxisName) && HomePlanet.CoinCount >= SmokeCost)
             {
                 SmokeScreen.Deploy();
-                HomePlanet.CoinCount -= 15;
+                HomePlanet.CoinCount -= SmokeCost;
             }
-            if (Input.GetButtonDown(medkitName) && HomePlanet.CoinCount >= 15)
+            if (Input.GetButtonDown(medkitName) && HomePlanet.CoinCount >= HealCost)
             {
                 if (HomePlanet._hitPoints < 99)
                 {
-                    HomePlanet.CoinCount -= 15;
+                    HomePlanet.CoinCount -= HealCost;
                     HomePlanet.HealDamage(2);
                 }
             }
-            if (Input.GetButtonDown(trifireAxisName) && HomePlanet.CoinCount >= 15)
+            if (Input.GetButtonDown(trifireAxisName) && HomePlanet.CoinCount >= TrifireCost)
             {
                 if (!_trifireMode)
                 {
-                    HomePlanet.CoinCount -= 15;
+                    HomePlanet.CoinCount -= TrifireCost;
                     StartCoroutine(EnterTrifireMode());
                 }
             }
-            if (Input.GetButtonDown(empAxisName) && HomePlanet.CoinCount >= 15)
+            if (Input.GetButtonDown(empAxisName) && HomePlanet.CoinCount >= EMPCost)
             {
                 if (!EnemySpawner.IsInEMPMode)
                 {
-                    HomePlanet.CoinCount -= 15;
+                    HomePlanet.CoinCount -= EMPCost;
                     StartCoroutine(EnemySpawner.EnterEMPState(5f));
                 }
             }
-            if (Input.GetButtonDown(nukeAxisName) && HomePlanet.CoinCount >= 15)
+            if (Input.GetButtonDown(nukeAxisName) && HomePlanet.CoinCount >= NukeCost)
             {
                 StartCoroutine(Nuke());
-                HomePlanet.CoinCount -= 15;
+                HomePlanet.CoinCount -= NukeCost;
             }
 
             var horizontalAxisValue = Input.GetAxis(horizontalAxisName);

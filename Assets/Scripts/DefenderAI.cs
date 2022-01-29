@@ -6,9 +6,6 @@ using UnityEngine;
 public class DefenderAI : MonoBehaviour
 {
     [SerializeField]
-    private Planet playerPlanet;
-
-    [SerializeField]
     private Defender player;
 
     [SerializeField]
@@ -29,13 +26,17 @@ public class DefenderAI : MonoBehaviour
     private WaitForSeconds calcFiringAnglesStep;
     private WaitForSeconds pauseBetweenEnemiesStep;
 
+    private int turretsPlaced = 0;
+    private int maxTurrets = 6;
+
     // Start is called before the first frame update
     void Start()
     {
         enemyAngles = new List<float>();
-        playerPlanetPosition = playerPlanet.transform.position;
+        playerPlanetPosition = player.HomePlanet.transform.position;
 
         StartCoroutine(CalcFiringAngles());
+        StartCoroutine(CalcUsePowerups());
     }
 
     public void SetDifficulty(string difficulty)
@@ -131,6 +132,24 @@ public class DefenderAI : MonoBehaviour
         }
     }
 
+    IEnumerator CalcUsePowerups()
+    {
+        while (!_gameState.IsGameOver)
+        {
+            yield return calcFiringAnglesStep;
+
+            int money = player.HomePlanet.CoinCount;
+
+            if (turretsPlaced < maxTurrets && money > player.TurretCost)
+            {
+                turretsPlaced++;
+
+                float angle = 360 / maxTurrets * turretsPlaced;
+                float playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
+                transform.RotateAround(playerPlanetPosition, Vector3.back, playerAngle);
+            }
+        }
+    }
 
     private float AngleBetweenVector2(Vector2 vec1, Vector2 vec2)
     {

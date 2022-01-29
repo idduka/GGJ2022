@@ -12,12 +12,12 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1.0f;
     }
     public Camera player1camera;
-   public Camera player2camera;
+    public Camera player2camera;
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Exit"))
+        if (Input.GetButtonDown("Exit"))
         {
             if (_menuShown)
             {
@@ -26,21 +26,21 @@ public class GameController : MonoBehaviour
                 //player2camera.enabled = true;
 
                 SceneManager.UnloadSceneAsync("MainMenu");
-                
+
                 Time.timeScale = 1.0f;
 
             }
             else
             {
-                
+
                 // Pause game and show menu.
                 Time.timeScale = 0.0f;
 
-               
+
 
                 SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
                 SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-               
+
 
 
             }
@@ -51,14 +51,14 @@ public class GameController : MonoBehaviour
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         if (player1camera != null)
-             {
+        {
 
             player1camera.enabled = false;
             player2camera.enabled = false;
             player1camera.enabled = true;
             player2camera.enabled = true;
         }
-       // throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
