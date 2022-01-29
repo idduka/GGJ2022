@@ -18,6 +18,8 @@ public class Turret : MonoBehaviour
     
     public EnemySpawner EnemySpawner { private get; set; }
 
+    private int _turretLIfe = 5;
+
     private void Start()
     {
         StartCoroutine(StartFiring());
@@ -46,11 +48,21 @@ public class Turret : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 90);
 
             Fire();
+            _turretLIfe -=1;
+            Debug.Log(_turretLIfe.ToString());
+            if (_turretLIfe == 0)
+            {
+                DestroyTower();
             
+            }
+
             yield return new WaitForSeconds(_fireRate);
         }
     }
-
+    void DestroyTower ()
+    {
+        Destroy(gameObject);
+    }
     private void Fire()
     {
         AudioSource firesound = GetComponent<AudioSource>();
