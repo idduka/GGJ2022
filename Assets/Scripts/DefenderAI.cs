@@ -20,6 +20,7 @@ public class DefenderAI : MonoBehaviour
     private List<float> enemyAngles;
     private Vector2 playerPlanetPosition;
 
+    private float angleError;
     private WaitForSeconds calcFiringAnglesStep;
     private WaitForSeconds pauseBetweenEnemiesStep;
 
@@ -40,17 +41,20 @@ public class DefenderAI : MonoBehaviour
 
         if (this.difficulty == "easy")
         {
+            angleError = 20f;
             calcFiringAnglesStep = new WaitForSeconds(1f);
             pauseBetweenEnemiesStep = new WaitForSeconds(0.5f);
         }
         else if (this.difficulty == "medium")
         {
+            angleError = 15f;
             calcFiringAnglesStep = new WaitForSeconds(0.6f);
             pauseBetweenEnemiesStep = new WaitForSeconds(0.2f);
         }
         else if (this.difficulty == "hard")
         {
-            calcFiringAnglesStep = new WaitForSeconds(0.2f);
+            angleError = 5f;
+            calcFiringAnglesStep = new WaitForSeconds(0.1f);
             pauseBetweenEnemiesStep = new WaitForSeconds(0.1f);
         }
 
@@ -72,7 +76,7 @@ public class DefenderAI : MonoBehaviour
 
                 foreach (var ea in enemySpawner.AliveEnemies.Where(x => !x.IsPhasing))
                 {
-                    float enemyAngle = AngleBetweenVector2(ea.transform.position, playerPlanetPosition);
+                    float enemyAngle = AngleBetweenVector2(ea.transform.position, playerPlanetPosition) + Random.Range(0, angleError);
                     enemyAngles.Add(enemyAngle);
                 }
             }
