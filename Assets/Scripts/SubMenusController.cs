@@ -13,7 +13,7 @@ public class SubMenusController : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 1.0f;
+       // Time.timeScale = 1.0f;
     }
 
     void Update()
@@ -28,14 +28,14 @@ public class SubMenusController : MonoBehaviour
             {
                 
                 SceneManager.UnloadSceneAsync("Story");
-                Time.timeScale = 1.0f;
+                
             }
 
             if (SubMenuName == "help")
             {
                 
                 SceneManager.UnloadSceneAsync("Help");
-                Time.timeScale = 1.0f;
+              
 
 
             }
@@ -47,14 +47,14 @@ public class SubMenusController : MonoBehaviour
             if (SubMenuName == "story")
             {
                 opensubmenu= false;
-                Time.timeScale = 0.0f;
+               
                 SceneManager.LoadScene("Story", LoadSceneMode.Additive);
             }
 
             if (SubMenuName == "help")
             {
                 opensubmenu = false;
-                Time.timeScale = 0.0f;
+      
                 SceneManager.LoadScene("Help", LoadSceneMode.Additive);
 
             }
