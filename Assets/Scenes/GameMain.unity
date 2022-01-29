@@ -2436,6 +2436,7 @@ MonoBehaviour:
   playerPlanet: {fileID: 1190018689}
   player: {fileID: 1720408029}
   enemySpawner: {fileID: 1542135671}
+  _gameState: {fileID: 11400000, guid: 2e40c394667cb3f408f949551d1791f3, type: 2}
 --- !u!1001 &1737360796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3134,6 +3135,7 @@ MonoBehaviour:
   playerPlanet: {fileID: 110614400}
   player: {fileID: 6048695526424587228}
   enemySpawner: {fileID: 507171867}
+  _gameState: {fileID: 11400000, guid: 2e40c394667cb3f408f949551d1791f3, type: 2}
 --- !u!114 &6048695526424587228 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}

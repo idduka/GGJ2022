@@ -14,12 +14,17 @@ public class DefenderAI : MonoBehaviour
     [SerializeField]
     private EnemySpawner enemySpawner;
 
+    [SerializeField]
+    [Tooltip("The game state object.")]
+    private GameState _gameState;
+
     private List<string> validDifficulties = new List<string> { "easy", "medium", "hard" };
     private string difficulty;
 
     private List<float> enemyAngles;
     private Vector2 playerPlanetPosition;
 
+    private float angleStep;
     private float angleError;
     private WaitForSeconds calcFiringAnglesStep;
     private WaitForSeconds pauseBetweenEnemiesStep;
@@ -27,9 +32,10 @@ public class DefenderAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        difficulty = "hard";
         enemyAngles = new List<float>();
-        playerPlanetPosition = playerPlanet.transform.position;        
+        playerPlanetPosition = playerPlanet.transform.position;
+
+        StartCoroutine(CalcFiringAngles());
     }
 
     public void SetDifficulty(string difficulty)
@@ -41,30 +47,31 @@ public class DefenderAI : MonoBehaviour
 
         if (this.difficulty == "easy")
         {
+            angleStep = 180;
             angleError = 20f;
             calcFiringAnglesStep = new WaitForSeconds(1f);
-            pauseBetweenEnemiesStep = new WaitForSeconds(0.5f);
+            pauseBetweenEnemiesStep = new WaitForSeconds(0.3f);
         }
         else if (this.difficulty == "medium")
         {
+            angleStep = 60;
             angleError = 15f;
             calcFiringAnglesStep = new WaitForSeconds(0.6f);
             pauseBetweenEnemiesStep = new WaitForSeconds(0.2f);
         }
         else if (this.difficulty == "hard")
         {
+            angleStep = 30;
             angleError = 5f;
             calcFiringAnglesStep = new WaitForSeconds(0.1f);
             pauseBetweenEnemiesStep = new WaitForSeconds(0.1f);
         }
-
-        StartCoroutine(CalcFiringAngles());
     }
 
     // Update is called once per frame
     IEnumerator CalcFiringAngles()
     {
-        while (true)
+        while (!_gameState.IsGameOver)
         {
             yield return calcFiringAnglesStep;
 
@@ -87,7 +94,7 @@ public class DefenderAI : MonoBehaviour
                 {
                     float angleToTurn = (playerAngle - ea);
 
-                    if (Mathf.Abs(angleToTurn) < 45)
+                    if (Mathf.Abs(angleToTurn) < angleStep)
                     {
                         float mult = (angleToTurn < 0) ? -1 : 1;
                         for (int i = 1; i <= Mathf.Abs(angleToTurn); i++)
@@ -98,8 +105,8 @@ public class DefenderAI : MonoBehaviour
                     }
                     else
                     {
-                        float toTurn = angleToTurn / 45;
-                        for (int i = 1; i <= 45; i++)
+                        float toTurn = angleToTurn / angleStep;
+                        for (int i = 1; i <= angleStep; i++)
                         {
                             transform.RotateAround(playerPlanetPosition, Vector3.back, toTurn);
                             yield return null;
@@ -109,7 +116,14 @@ public class DefenderAI : MonoBehaviour
                     playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
                     player.Fire();
 
-                    yield return pauseBetweenEnemiesStep;
+                    if (_gameState.IsGameOver)
+                    {
+                        yield break;
+                    }
+                    else
+                    {
+                        yield return pauseBetweenEnemiesStep;
+                    }
                 }
 
                 enemyAngles = new List<float>();
