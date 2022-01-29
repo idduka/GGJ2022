@@ -48,4 +48,6 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 6851775728168396017, guid: 9f3526102b5f9234dbce60da6f323b52, type: 3}
   _targetPlanet: {fileID: 0}
   _otherEnemySpawner: {fileID: 0}
-  _respawnDelay: 0
+  _respawnDelay: 1.5
+  _phaseEffectPrefab: {fileID: 1427276267102109387, guid: 05b32a631861f554c8fb0c2f3f5009ad, type: 3}
+  IsInEMPMode: 0

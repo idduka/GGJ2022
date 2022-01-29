@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
     {
         if(IsRespawn)
         {
-            StartCoroutine(PhaseIn());
+            // StartCoroutine(PhaseIn());
         }
     }
 
