@@ -1823,6 +1823,34 @@ PrefabInstance:
       value: SplitScreenBorder
       objectReference: {fileID: 0}
     - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b89ceee28006c254fba7070e72341103, type: 3}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
       propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
@@ -1831,8 +1859,16 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6404524947458981975, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.040000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404524947458981975, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404524947458981975, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -4.97
       objectReference: {fileID: 0}
     - target: {fileID: 6404524947458981975, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2973,6 +3009,38 @@ PrefabInstance:
       value: SplitScreenBorder
       objectReference: {fileID: 0}
     - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1c7a6fc941af394e8c73e3d4a434bab, type: 3}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770834483613805139, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
       propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
@@ -2981,8 +3049,16 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6404524947458981975, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404524947458981975, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404524947458981975, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 4.975
       objectReference: {fileID: 0}
     - target: {fileID: 6404524947458981975, guid: 93e827c481b5af84c8b40b61f79796b2, type: 3}
       propertyPath: m_LocalPosition.y
