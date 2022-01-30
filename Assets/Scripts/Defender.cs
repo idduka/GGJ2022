@@ -16,7 +16,9 @@ public class Defender : MonoBehaviour
     public SmokeScreen SmokeScreen;
     public ParticleSystem NukeEffect;
     public PowerUpController PowerUpController;
-
+    public AudioClip NukeSound;
+    public AudioClip EMPSound;
+    public AudioSource PowerUPSSound;
     public bool _trifireMode = false;
     
     // Start is called before the first frame update
@@ -82,12 +84,16 @@ public class Defender : MonoBehaviour
             {
                 if (!EnemySpawner.IsInEMPMode)
                 {
+                    PowerUPSSound.clip = EMPSound;
+                    PowerUPSSound.Play();
                     HomePlanet.CoinCount -= PowerUpController.EmpCost;
                     StartCoroutine(EnemySpawner.EnterEMPState(5f));
                 }
             }
             if (Input.GetButtonDown(nukeAxisName) && HomePlanet.CoinCount >= PowerUpController.NukeCost)
             {
+                PowerUPSSound.clip = NukeSound;
+                PowerUPSSound.Play();
                 StartCoroutine(Nuke());
                 HomePlanet.CoinCount -= PowerUpController.NukeCost;
             }
@@ -131,7 +137,7 @@ public class Defender : MonoBehaviour
     public void TriFire()
     {
         AudioSource firesound = GetComponent<AudioSource>();
-        firesound.Play(0);
+        
 
         // start position for projectile is:
         // defender position + vector towards defender sprite center.
