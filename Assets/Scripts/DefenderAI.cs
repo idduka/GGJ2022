@@ -204,9 +204,9 @@ public class DefenderAI : MonoBehaviour
             }
 
             if (player.EnemySpawner.AliveEnemies != null
-                && (player.EnemySpawner.AliveEnemies.Count > 30
+                && (player.EnemySpawner.AliveEnemies.Count > 25
                 || player.HomePlanet._hitPoints < 75 && player.EnemySpawner.AliveEnemies.Count > 20
-                || player.HomePlanet._hitPoints < 50 && player.EnemySpawner.AliveEnemies.Count > 10)
+                || player.HomePlanet._hitPoints < 50 && player.EnemySpawner.AliveEnemies.Count > 15)
                 && player.HomePlanet.CoinCount > PowerUpController.NukeCost
                 && (System.DateTime.Now - timeOfLastNuke).TotalSeconds > 30)
             {
