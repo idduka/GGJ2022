@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class Planet : MonoBehaviour
@@ -50,7 +51,7 @@ public class Planet : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The text field displaying the number of coins.")]
-    private TextMeshProUGUI _coinTextField;
+    private Text _coinTextField;
     
     public float Radius = 1.0f;
 
