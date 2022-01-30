@@ -137,7 +137,7 @@ public class Defender : MonoBehaviour
     public void TriFire()
     {
         AudioSource firesound = GetComponent<AudioSource>();
-
+        firesound.Play(0);
 
         // start position for projectile is:
         // defender position + vector towards defender sprite center.
