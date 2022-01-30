@@ -3795,6 +3795,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1542135671}
     - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
+      propertyPath: _otherPlayer
+      value: 
+      objectReference: {fileID: 6048695526424587228}
+    - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
       propertyPath: PowerUPSSound
       value: 
       objectReference: {fileID: 578000322}
@@ -4685,6 +4689,10 @@ PrefabInstance:
       propertyPath: TurretPrefab
       value: 
       objectReference: {fileID: -1184181345860249836, guid: 557029ede08f890478321eaa4bf45aa5, type: 3}
+    - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
+      propertyPath: _otherPlayer
+      value: 
+      objectReference: {fileID: 1720408029}
     - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
       propertyPath: PowerUPSSound
       value: 

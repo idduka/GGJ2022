@@ -97,8 +97,8 @@ public class DefenderAI : MonoBehaviour
                 enemyAngles = new List<float>();
 
                 foreach (var ea in enemySpawner.AliveEnemies.Where(x => !x.IsPhasing))
-                {
-                    float enemyAngle = AngleBetweenVector2(ea.transform.position, playerPlanetPosition) + Random.Range(0, angleError);
+                {                    
+                    float enemyAngle = AngleBetweenVector2(ea.transform.position, playerPlanetPosition) + Random.Range(0, (player._hasSmokeScreenShowing ? angleError + 10f : angleError));
                     enemyAngles.Add(enemyAngle);
                 }
             }

@@ -23,6 +23,8 @@ public class Defender : MonoBehaviour
     public AudioSource PowerUPSSound;
     public bool _trifireMode = false;
 
+    public Defender _otherPlayer;
+    public bool _hasSmokeScreenShowing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +67,7 @@ public class Defender : MonoBehaviour
             if (Input.GetButtonDown(smokeAxisName) && HomePlanet.CoinCount >= PowerUpController.CloudCost)
             {
                 SmokeScreen.Deploy();
+                StartCoroutine(SetSmokeScreenTimer());
                 HomePlanet.CoinCount -= PowerUpController.CloudCost;
             }
             if (Input.GetButtonDown(medkitName) && HomePlanet.CoinCount >= PowerUpController.HealthCost)
@@ -185,5 +188,12 @@ public class Defender : MonoBehaviour
         {
             EnemySpawner.AliveEnemies.First().Die();
         }
+    }
+
+    public IEnumerator SetSmokeScreenTimer()
+    {
+        _otherPlayer._hasSmokeScreenShowing = true;
+        yield return new WaitForSeconds(10.0f);
+        _otherPlayer._hasSmokeScreenShowing = false;
     }
 }
