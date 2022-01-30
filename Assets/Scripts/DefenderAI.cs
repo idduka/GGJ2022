@@ -62,21 +62,21 @@ public class DefenderAI : MonoBehaviour
 
         if (this.difficulty == "easy")
         {
-            angleStep = 180;
-            angleError = 15f;
-            calcFiringAnglesStep = new WaitForSeconds(1f);
+            angleStep = 30;
+            angleError = 10f;
+            calcFiringAnglesStep = new WaitForSeconds(0.5f);
             pauseBetweenEnemiesStep = new WaitForSeconds(0.3f);
         }
         else if (this.difficulty == "medium")
         {
-            angleStep = 60;
+            angleStep = 20;
             angleError = 10f;
-            calcFiringAnglesStep = new WaitForSeconds(0.5f);
+            calcFiringAnglesStep = new WaitForSeconds(0.25f);
             pauseBetweenEnemiesStep = new WaitForSeconds(0.2f);
         }
         else if (this.difficulty == "hard")
         {
-            angleStep = 30;
+            angleStep = 10;
             angleError = 5f;
             calcFiringAnglesStep = new WaitForSeconds(0.1f);
             pauseBetweenEnemiesStep = new WaitForSeconds(0.1f);
@@ -108,6 +108,12 @@ public class DefenderAI : MonoBehaviour
                 foreach (float ea in enemyAngles.OrderBy(x => x))
                 {
                     float angleToTurn = (playerAngle - ea);
+
+                    if (Mathf.Abs(angleToTurn) > 180)
+                    {
+                        float mult = (angleToTurn < 0) ? 1 : -1;
+                        angleToTurn = (360 - Mathf.Abs(angleToTurn)) * mult;
+                    }
 
                     if (Mathf.Abs(angleToTurn) < angleStep)
                     {
@@ -173,19 +179,22 @@ public class DefenderAI : MonoBehaviour
                 && player.HomePlanet.CoinCount > PowerUpController.TurretCost
                 && (System.DateTime.Now - timeOfLastTurret).TotalSeconds > 15)
             {
-                turretsPlaced++;
+                if (Random.Range(0, 1f) < 0.75f)
+                {
+                    turretsPlaced++;
 
-                float angle = 360 / maxTurrets * turretsPlaced;
-                float playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
-                transform.RotateAround(playerPlanetPosition, Vector3.back, playerAngle);
-                transform.RotateAround(playerPlanetPosition, Vector3.back, angle);
+                    float angle = 360 / maxTurrets * turretsPlaced;
+                    float playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
+                    transform.RotateAround(playerPlanetPosition, Vector3.back, playerAngle);
+                    transform.RotateAround(playerPlanetPosition, Vector3.back, angle);
 
-                player.HomePlanet.CoinCount -= PowerUpController.TurretCost;
-                player.PlaceTurret();
+                    player.HomePlanet.CoinCount -= PowerUpController.TurretCost;
+                    player.PlaceTurret();
 
-                timeOfLastTurret = System.DateTime.Now;
+                    timeOfLastTurret = System.DateTime.Now;
 
-                yield return null;
+                    yield return null;
+                }
             }
 
             if (player.EnemySpawner.AliveEnemies != null
@@ -195,11 +204,14 @@ public class DefenderAI : MonoBehaviour
                 && player.HomePlanet.CoinCount > PowerUpController.NukeCost
                 && (System.DateTime.Now - timeOfLastNuke).TotalSeconds > 30)
             {
-                player.HomePlanet.CoinCount -= PowerUpController.NukeCost;
-                StartCoroutine(player.Nuke());
-                timeOfLastNuke = System.DateTime.Now;
+                if (Random.Range(0, 1f) < 0.75f)
+                {
+                    player.HomePlanet.CoinCount -= PowerUpController.NukeCost;
+                    StartCoroutine(player.Nuke());
+                    timeOfLastNuke = System.DateTime.Now;
 
-                yield return null;
+                    yield return null;
+                }
             }
 
             if ((player?.EnemySpawner?._otherEnemySpawner?.AliveEnemies?.Count ?? 0) > 20
