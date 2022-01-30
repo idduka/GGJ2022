@@ -84,16 +84,15 @@ public class Defender : MonoBehaviour
             {
                 if (!EnemySpawner.IsInEMPMode)
                 {
-                    PowerUPSSound.clip = EMPSound;
-                    PowerUPSSound.Play();
+                   // PowerUPSSound.clip = EMPSound;
+                    //PowerUPSSound.Play();
                     HomePlanet.CoinCount -= PowerUpController.EmpCost;
                     StartCoroutine(EnemySpawner.EnterEMPState(5f));
                 }
             }
             if (Input.GetButtonDown(nukeAxisName) && HomePlanet.CoinCount >= PowerUpController.NukeCost)
             {
-                PowerUPSSound.clip = NukeSound;
-                PowerUPSSound.Play();
+               
                 StartCoroutine(Nuke());
                 HomePlanet.CoinCount -= PowerUpController.NukeCost;
             }
@@ -170,6 +169,8 @@ public class Defender : MonoBehaviour
 
     public IEnumerator Nuke()
     {
+        PowerUPSSound.clip = NukeSound;
+        PowerUPSSound.Play();
         NukeEffect.Play();
         yield return new WaitForSeconds(2.0f);
         while(EnemySpawner.AliveEnemies.Count != 0)

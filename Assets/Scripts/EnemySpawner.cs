@@ -35,7 +35,8 @@ public class EnemySpawner : MonoBehaviour
     
     private Vector2 _topLeftCorner;
     public bool IsInEMPMode;
-
+    public AudioClip EMPSound;
+    public AudioSource PowerUPSSound;
     public List<Enemy> AliveEnemies { get; set; } = new List<Enemy>();
 
     private void Start()
@@ -94,6 +95,8 @@ public class EnemySpawner : MonoBehaviour
     {
         if (!IsInEMPMode)
         {
+            PowerUPSSound.clip = EMPSound;
+            PowerUPSSound.Play();
             IsInEMPMode = true;
             AliveEnemies = AliveEnemies.Select(x => { x.IsBeingAffectedByEMP = true; return x; }).ToList();
             yield return new WaitForSeconds(seconds);
