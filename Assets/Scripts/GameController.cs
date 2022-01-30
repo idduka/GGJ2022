@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1.0f;
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
     }
     public Camera player1camera;
     public Camera player2camera;
