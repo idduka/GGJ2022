@@ -18,6 +18,8 @@ public class Turret : MonoBehaviour
 
     public EnemySpawner EnemySpawner { private get; set; }
 
+    public float SpawnAngle { get; set; }
+
     private int _turretAmmo = 30;
 
     private void Start()
@@ -49,7 +51,7 @@ public class Turret : MonoBehaviour
 
             Fire();
             _turretAmmo -= 1;
-            
+
             if (_turretAmmo == 0)
             {
                 DestroyTurret();
@@ -73,5 +75,10 @@ public class Turret : MonoBehaviour
         Instantiate(_projectilePrefab,
             transform.position + (transform.rotation * Vector3.up * GetComponent<SpriteRenderer>().bounds.size.y / 2),
             transform.rotation);
+    }
+
+    public int GetTurretAmmo()
+    {
+        return _turretAmmo;
     }
 }

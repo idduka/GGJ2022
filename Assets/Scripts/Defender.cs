@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class Defender : MonoBehaviour
     public GameState GameState;
     public EnemySpawner EnemySpawner;
     public Turret TurretPrefab;
+    public List<Turret> PlayerTurrets = new List<Turret>();
     public ParticleSystem DirtTrail;
     public SmokeScreen SmokeScreen;
     public ParticleSystem NukeEffect;
@@ -20,7 +22,8 @@ public class Defender : MonoBehaviour
     public AudioClip EMPSound;
     public AudioSource PowerUPSSound;
     public bool _trifireMode = false;
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +47,7 @@ public class Defender : MonoBehaviour
             {
                 return;
             }
-            
+
             var horizontalAxisName = IsPlayer1 ? "P1Horizontal" : "P2Horizontal";
             var fireAxisName = IsPlayer1 ? "P1Fire" : "P2Fire";
             var turretAxisName = IsPlayer1 ? "P1Turret" : "P2Turret";
@@ -56,7 +59,7 @@ public class Defender : MonoBehaviour
 
             if (Input.GetButtonDown(turretAxisName) && HomePlanet.CoinCount >= PowerUpController.TurretCost)
             {
-                PlaceTurret();
+                PlaceTurret(null);
                 HomePlanet.CoinCount -= PowerUpController.TurretCost;
             }
             if (Input.GetButtonDown(smokeAxisName) && HomePlanet.CoinCount >= PowerUpController.CloudCost)
@@ -84,15 +87,13 @@ public class Defender : MonoBehaviour
             {
                 if (!EnemySpawner.IsInEMPMode)
                 {
-                   // PowerUPSSound.clip = EMPSound;
-                    //PowerUPSSound.Play();
                     HomePlanet.CoinCount -= PowerUpController.EmpCost;
                     StartCoroutine(EnemySpawner.EnterEMPState(5f));
                 }
             }
             if (Input.GetButtonDown(nukeAxisName) && HomePlanet.CoinCount >= PowerUpController.NukeCost)
             {
-               
+
                 StartCoroutine(Nuke());
                 HomePlanet.CoinCount -= PowerUpController.NukeCost;
             }
@@ -124,7 +125,7 @@ public class Defender : MonoBehaviour
 
     public void Fire()
     {
-        AudioSource firesound = GetComponent <AudioSource>();
+        AudioSource firesound = GetComponent<AudioSource>();
         firesound.Play(0);
         // start position for projectile is:
         // defender position + vector towards defender sprite center.
@@ -136,7 +137,7 @@ public class Defender : MonoBehaviour
     public void TriFire()
     {
         AudioSource firesound = GetComponent<AudioSource>();
-        
+
 
         // start position for projectile is:
         // defender position + vector towards defender sprite center.
@@ -151,13 +152,20 @@ public class Defender : MonoBehaviour
             transform.rotation * Quaternion.AngleAxis(-20, Vector3.back));
     }
 
-    public void PlaceTurret()
+    public void PlaceTurret(float? placedAngle)
     {
         var turret = Instantiate(TurretPrefab,
             transform.position + (transform.rotation * Vector3.up * 2),
             transform.rotation).GetComponent<Turret>();
 
         turret.EnemySpawner = EnemySpawner;
+
+        if (placedAngle != null)
+        {
+            turret.SpawnAngle = placedAngle.Value;
+        }
+
+        PlayerTurrets.Add(turret);
     }
 
     public IEnumerator EnterTrifireMode()
@@ -173,7 +181,7 @@ public class Defender : MonoBehaviour
         PowerUPSSound.Play();
         NukeEffect.Play();
         yield return new WaitForSeconds(2.0f);
-        while(EnemySpawner.AliveEnemies.Count != 0)
+        while (EnemySpawner.AliveEnemies.Count != 0)
         {
             EnemySpawner.AliveEnemies.First().Die();
         }

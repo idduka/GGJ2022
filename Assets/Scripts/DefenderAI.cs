@@ -181,16 +181,22 @@ public class DefenderAI : MonoBehaviour
             {
                 if (Random.Range(0, 1f) < 0.75f)
                 {
-                    turretsPlaced++;
+                    float angle = 0;
+                    float addAngle = 360 / maxTurrets;
 
-                    float angle = 360 / maxTurrets * turretsPlaced;
+                    while (player.PlayerTurrets.Any(x => x.SpawnAngle == angle) && angle <= 360)
+                    {
+                        angle += addAngle;
+                    }
+
                     float playerAngle = AngleBetweenVector2(player.transform.position, playerPlanetPosition);
                     transform.RotateAround(playerPlanetPosition, Vector3.back, playerAngle);
                     transform.RotateAround(playerPlanetPosition, Vector3.back, angle);
 
                     player.HomePlanet.CoinCount -= PowerUpController.TurretCost;
-                    player.PlaceTurret();
+                    player.PlaceTurret(angle);
 
+                    turretsPlaced++;
                     timeOfLastTurret = System.DateTime.Now;
 
                     yield return null;
@@ -258,6 +264,9 @@ public class DefenderAI : MonoBehaviour
                     yield return null;
                 }
             }
+
+            player.PlayerTurrets = player.PlayerTurrets.Where(x => x.GetTurretAmmo() > 0).ToList();
+            turretsPlaced = player.PlayerTurrets.Count;
         }
     }
 
