@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class PowerUpController : MonoBehaviour
 {
@@ -29,10 +31,27 @@ public class PowerUpController : MonoBehaviour
     public int CloudCost;
 
     public GameState _gameState;
+
+    public Text TurretCostText;
+    public Text HealCostText;
+    public Text TriShostCostText;
+    public Text NukeCostText;
+    public Text EmpCostText;
+    public Text CloudCostText;
     
     private readonly Color _grey = new Color(0.3f, 0.3f, 0.3f);
     private readonly Color _originalColor = new Color(1, 1, 1);
-    
+
+    private void Start()
+    {
+        TurretCostText.text = TurretCost.ToString();
+        HealCostText.text = HealthCost.ToString();
+        TriShostCostText.text = TriShotCost.ToString();
+        NukeCostText.text = NukeCost.ToString();
+        EmpCostText.text = EmpCost.ToString();
+        CloudCostText.text = CloudCost.ToString();
+    }
+
     private void FixedUpdate()
     {
         if (_gameState.IsGameOver)
