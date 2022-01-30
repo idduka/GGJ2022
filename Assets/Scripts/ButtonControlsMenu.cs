@@ -18,6 +18,10 @@ public void DisplayStory()
         MenuController.SubMenuName = "help";
         MenuController.opensubmenu = true;
     }
-
+    public void DisplaySinglePlayer()
+    {
+        MenuController.SubMenuName = "singleplayer";
+        MenuController.opensubmenu = true;
+    }
 
 }
