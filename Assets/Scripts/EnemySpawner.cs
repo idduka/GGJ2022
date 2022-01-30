@@ -32,12 +32,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     [Tooltip("The game state object.")]
     private GameState _gameState;
-    
+
     private Vector2 _topLeftCorner;
     public bool IsInEMPMode;
     public AudioClip EMPSound;
     public AudioSource PowerUPSSound;
-    
+
     public List<Enemy> AliveEnemies { get; set; } = new List<Enemy>();
 
     private void Start()
@@ -61,26 +61,26 @@ public class EnemySpawner : MonoBehaviour
     {
         StartCoroutine(_otherEnemySpawner.RespawnEnemy(relativePosition, speed));
     }
-    
+
     public IEnumerator RespawnEnemy(Vector2 relativePosition, float speed)
     {
         if (_gameState.IsGameOver)
         {
             yield break;
         }
-        
+
         var phaseEffect = Instantiate(_phaseEffectPrefab, _playerZone);
         phaseEffect.transform.localPosition = relativePosition;
-        
+
         yield return new WaitForSeconds(_respawnDelay);
-        
+
         Destroy(phaseEffect);
-        
+
         if (_gameState.IsGameOver)
         {
             yield break;
         }
-        
+
         var createdEnemy = Instantiate(_enemyPrefab, _playerZone);
         createdEnemy.transform.localPosition = relativePosition;
         var enemyComponent = createdEnemy.GetComponent<Enemy>();
@@ -103,6 +103,6 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(seconds);
             AliveEnemies = AliveEnemies.Select(x => { x.IsBeingAffectedByEMP = false; return x; }).ToList();
             IsInEMPMode = false;
-        }        
+        }
     }
 }

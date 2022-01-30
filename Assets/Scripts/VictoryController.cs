@@ -17,7 +17,7 @@ public class VictoryController : MonoBehaviour
     [SerializeField]
     [Tooltip("The sprite for a player defeat.")]
     private Sprite _defeatSprite;
-    
+
     [SerializeField]
     [Tooltip("The sprite for a player victory.")]
     private Sprite _victorySprite;
@@ -25,18 +25,18 @@ public class VictoryController : MonoBehaviour
     [SerializeField]
     [Tooltip("The sprite renderer for the game result.")]
     private SpriteRenderer _gameResultSpriteRenderer;
-    
+
     public void SetVictory()
     {
         _gameState.IsGameOver = true;
         _gameResultSpriteRenderer.enabled = true;
         _gameResultSpriteRenderer.sprite = _victorySprite;
-        
+
         foreach (var enemy in _enemySpawner.AliveEnemies)
         {
             Destroy(enemy.gameObject);
         }
-        
+
         _enemySpawner.AliveEnemies.Clear();
     }
 
@@ -46,12 +46,12 @@ public class VictoryController : MonoBehaviour
         _gameResultSpriteRenderer.sprite = _defeatSprite;
 
         _otherVictoryController.SetVictory();
-        
+
         foreach (var enemy in _enemySpawner.AliveEnemies)
         {
             Destroy(enemy.gameObject);
         }
-        
+
         _enemySpawner.AliveEnemies.Clear();
     }
 

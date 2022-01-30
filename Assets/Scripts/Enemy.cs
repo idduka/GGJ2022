@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -33,7 +32,7 @@ public class Enemy : MonoBehaviour
         }
         set
         {
-            if(value == true)
+            if (value == true)
             {
                 SparksEffect.Play();
             }
@@ -43,13 +42,13 @@ public class Enemy : MonoBehaviour
     private bool _isBeingAffectedByEMP;
 
     private SpriteRenderer _spriteRenderer;
-    
+
     public Planet TargetPlanet { get; set; }
-    
+
     public int HitPoints { get; set; }
 
     public bool IsRespawn { get; set; }
-    
+
     public EnemySpawner EnemySpawner { private get; set; }
 
     public GameObject GibPrefab;
@@ -60,7 +59,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        if(IsRespawn)
+        if (IsRespawn)
         {
             StartCoroutine(PhaseIn());
         }
@@ -81,7 +80,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(IsPhasing)
+        if (IsPhasing)
         {
             return;
         }
@@ -89,7 +88,7 @@ public class Enemy : MonoBehaviour
         var planet = other.GetComponent<Planet>();
 
         // Debug.Log($"HIT PLANET: {planet != null}");
-        
+
         if (planet != null)
         {
             planet.ApplyDamage(_damageToPlanet);

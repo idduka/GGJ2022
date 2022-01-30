@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +7,6 @@ public class ButtonBack : MonoBehaviour
 
     public void GoBack()
     {
-
         Scene s = SceneManager.GetSceneByName("MainMenu");
         GameObject[] gameObjects = s.GetRootGameObjects();
 
@@ -19,11 +16,11 @@ public class ButtonBack : MonoBehaviour
             {
                 SubMenusController Script;
                 Script = go.GetComponentInChildren<SubMenusController>();
-                Script.closesubmenu = true;   
+                Script.closesubmenu = true;
             }
 
         }
 
     }
-    
+
 }

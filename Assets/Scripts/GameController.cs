@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,20 +28,14 @@ public class GameController : MonoBehaviour
                 SceneManager.UnloadSceneAsync("MainMenu");
 
                 Time.timeScale = 1.0f;
-
             }
             else
             {
-
                 // Pause game and show menu.
                 Time.timeScale = 0.0f;
 
-
-
                 SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
                 SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-
-
 
             }
             _menuShown = !_menuShown;
@@ -54,13 +46,11 @@ public class GameController : MonoBehaviour
     {
         if (player1camera != null)
         {
-
             player1camera.enabled = false;
             player2camera.enabled = false;
             player1camera.enabled = true;
             player2camera.enabled = true;
         }
-        // throw new System.NotImplementedException();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -68,5 +58,4 @@ public class GameController : MonoBehaviour
         Debug.Log("OnSceneLoaded: " + scene.name);
         Debug.Log(mode);
     }
-
 }

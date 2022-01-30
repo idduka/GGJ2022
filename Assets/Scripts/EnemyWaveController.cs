@@ -44,9 +44,9 @@ public class EnemyWaveController : MonoBehaviour
 
     [SerializeField]
     private float _maxSpeedChange;
-    
+
     private int _waveCount = 1;
-    
+
     private Coroutine _coroutine;
 
     public AudioClip NewEnemyDetectedSound;
@@ -73,35 +73,35 @@ public class EnemyWaveController : MonoBehaviour
 
         var maxRandomX = _playerAreaTransform.rect.width;
         var maxRandomY = _playerAreaTransform.rect.height;
-        
+
         while (!_gameState.IsGameOver)
         {
             Debug.Log("Waiting for next wave spawn.");
 
             yield return NextWaveCountDown();
-            
+
             if (_gameState.IsGameOver)
             {
                 yield break;
             }
-            
+
             if (_waveCount > 1)
             {
                 totalSpawnCount += _numberOfSpawnPointsIncrease * _waveCount;
                 totalEnemyCount += _waveSizeIncrease * _waveCount;
             }
-            
+
             Debug.Log($"Wave spawn count: {totalSpawnCount}, wave enemy count: {totalEnemyCount}");
 
             var spawnPoints = new List<Vector2>();
-            
+
             for (int counter = 0; counter < totalSpawnCount; counter++)
             {
                 var spawnPoint =
-                    GetSpawningEdgePosition(Random.Range(0, (int) maxRandomX), Random.Range(0, (int) maxRandomY), _playerAreaTransform);
-                
+                    GetSpawningEdgePosition(Random.Range(0, (int)maxRandomX), Random.Range(0, (int)maxRandomY), _playerAreaTransform);
+
                 Debug.Log($"Spawn position {counter}: {spawnPoint.x}, {spawnPoint.y}");
-                
+
                 spawnPoints.Add(spawnPoint);
             }
 
@@ -110,17 +110,17 @@ public class EnemyWaveController : MonoBehaviour
             foreach (var spawnPoint in randomSpawnList)
             {
                 var speedChange = Random.Range(0, _maxSpeedChange);
-                
+
                 foreach (var enemySpawner in _enemySpawners)
                 {
                     if (_gameState.IsGameOver)
                     {
                         yield break;
                     }
-                    
+
                     enemySpawner.SpawnEnemy(spawnPoint, speedChange);
                 }
-                
+
                 yield return new WaitForSeconds(0.3f);
             }
 
@@ -132,7 +132,7 @@ public class EnemyWaveController : MonoBehaviour
     {
         var maxX = _playerAreaTransform.rect.width;
         var maxY = _playerAreaTransform.rect.height;
-        
+
         bool isXLeft = (maxX - randomX) > (0 + randomX);
 
         bool isYUp = (maxY - randomY) > (0 + randomY);
@@ -140,7 +140,7 @@ public class EnemyWaveController : MonoBehaviour
         var xDistance = isXLeft ? 0 + randomX : maxX - randomX;
 
         var yDistance = isYUp ? 0 + randomY : maxY - randomY;
-        
+
         // if the random position is closer to X than to Y, align it to the X axis
         // otherwise align the spawn point to the Y axis
         if (xDistance < yDistance)
@@ -158,11 +158,11 @@ public class EnemyWaveController : MonoBehaviour
     private List<Vector2> GetSpawnOrder(List<Vector2> spawnPoints, int enemyNumber)
     {
         var spawnPointOrderList = new List<Vector2>();
-        
+
         for (int index = 0; index < enemyNumber; index++)
         {
             var randomSpawnPointIndex = Random.Range(0, spawnPoints.Count - 1);
-            
+
             var spawnPoint = spawnPoints[randomSpawnPointIndex];
             spawnPointOrderList.Add(spawnPoint);
         }
@@ -173,7 +173,7 @@ public class EnemyWaveController : MonoBehaviour
     private IEnumerator NextWaveCountDown()
     {
         _nextWaveTextField.enabled = true;
-        
+
         var remainingSeconds = _waveSpawnDelay;
 
         while (remainingSeconds > 0)
@@ -183,7 +183,7 @@ public class EnemyWaveController : MonoBehaviour
                 _nextWaveTextField.enabled = false;
                 yield break;
             }
-            
+
             Debug.Log($"Remaining seconds: {remainingSeconds}");
             _nextWaveTextField.text = $"Next wave in: {remainingSeconds}";
             remainingSeconds--;

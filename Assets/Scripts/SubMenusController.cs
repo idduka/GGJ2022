@@ -1,48 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SubMenusController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool  closesubmenu = false;
-    public bool  opensubmenu = false;
+    public bool closesubmenu = false;
+    public bool opensubmenu = false;
     public string SubMenuName;
-    
+
 
     void Start()
     {
-       // Time.timeScale = 1.0f;
+        // Time.timeScale = 1.0f;
     }
 
     void Update()
     {
         if (closesubmenu == true)
         {
-            
-               closesubmenu = false;
-                //SceneManager.UnloadSceneAsync("MainMenu");
-                //Time.timeScale = 1.0f;
+            closesubmenu = false;
+            //SceneManager.UnloadSceneAsync("MainMenu");
+            //Time.timeScale = 1.0f;
             if (SubMenuName == "story")
             {
-                
                 SceneManager.UnloadSceneAsync("Story");
-                
             }
 
             if (SubMenuName == "help")
             {
-             
                 SceneManager.UnloadSceneAsync("Help");
-           
             }
 
             if (SubMenuName == "singleplayer")
             {
-
                 SceneManager.UnloadSceneAsync("DifficultySelection");
-
             }
         }
 
@@ -50,17 +41,16 @@ public class SubMenusController : MonoBehaviour
         {
             if (SubMenuName == "story")
             {
-                opensubmenu= false;
-               
+                opensubmenu = false;
+
                 SceneManager.LoadScene("Story", LoadSceneMode.Additive);
             }
 
             if (SubMenuName == "help")
             {
                 opensubmenu = false;
-      
-                SceneManager.LoadScene("Help", LoadSceneMode.Additive);
 
+                SceneManager.LoadScene("Help", LoadSceneMode.Additive);
             }
 
             if (SubMenuName == "singleplayer")
@@ -68,16 +58,7 @@ public class SubMenusController : MonoBehaviour
                 opensubmenu = false;
 
                 SceneManager.LoadScene("DifficultySelection", LoadSceneMode.Additive);
-
             }
-
-
-
-
         }
-
-
-
     }
-  
 }

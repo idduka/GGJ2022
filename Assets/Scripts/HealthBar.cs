@@ -6,7 +6,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField]
     [Tooltip("The sprite that represents the actual health bar filling.")]
     private Image _healthBarFilling;
-    
+
     private float _widthPerValue;
 
     public void SetMaxValue(int maxValue)
@@ -15,7 +15,7 @@ public class HealthBar : MonoBehaviour
 
         _widthPerValue = maxWidth / maxValue;
     }
-    
+
     public void SetValue(int newValue)
     {
         var newWidth = _widthPerValue * newValue;
