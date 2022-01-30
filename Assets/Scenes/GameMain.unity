@@ -3124,6 +3124,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 507171867}
     - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
+      propertyPath: TurretPrefab
+      value: 
+      objectReference: {fileID: -1184181345860249836, guid: 557029ede08f890478321eaa4bf45aa5, type: 3}
+    - target: {fileID: 8400175628833337976, guid: 045af42d6836de84fb53a73abbd8f3f8, type: 3}
       propertyPath: PowerUpController
       value: 
       objectReference: {fileID: 1573495724}
