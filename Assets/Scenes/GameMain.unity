@@ -2293,6 +2293,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1941337289251788281, guid: 852d72f526f6f7341b43e2c597f93d86, type: 3}
+      propertyPath: SmokeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 006794a1e25abd04bbf404e84c2222a5, type: 3}
+    - target: {fileID: 1941337289251788281, guid: 852d72f526f6f7341b43e2c597f93d86, type: 3}
+      propertyPath: PowerUPSSound
+      value: 
+      objectReference: {fileID: 578000322}
     - target: {fileID: 2546803407755837181, guid: 852d72f526f6f7341b43e2c597f93d86, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4547,6 +4555,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1941337289251788281, guid: 852d72f526f6f7341b43e2c597f93d86, type: 3}
+      propertyPath: SmokeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 006794a1e25abd04bbf404e84c2222a5, type: 3}
+    - target: {fileID: 1941337289251788281, guid: 852d72f526f6f7341b43e2c597f93d86, type: 3}
+      propertyPath: PowerUPSSound
+      value: 
+      objectReference: {fileID: 578000322}
     - target: {fileID: 2546803407755837181, guid: 852d72f526f6f7341b43e2c597f93d86, type: 3}
       propertyPath: m_RootOrder
       value: 6
