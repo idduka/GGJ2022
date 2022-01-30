@@ -33,13 +33,17 @@ public class SubMenusController : MonoBehaviour
 
             if (SubMenuName == "help")
             {
-                
+             
                 SceneManager.UnloadSceneAsync("Help");
-              
-
-
+           
             }
 
+            if (SubMenuName == "singleplayer")
+            {
+
+                SceneManager.UnloadSceneAsync("DifficultySelection");
+
+            }
         }
 
         if (opensubmenu == true)
@@ -56,6 +60,14 @@ public class SubMenusController : MonoBehaviour
                 opensubmenu = false;
       
                 SceneManager.LoadScene("Help", LoadSceneMode.Additive);
+
+            }
+
+            if (SubMenuName == "singleplayer")
+            {
+                opensubmenu = false;
+
+                SceneManager.LoadScene("DifficultySelection", LoadSceneMode.Additive);
 
             }
 

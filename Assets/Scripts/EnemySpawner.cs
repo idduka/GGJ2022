@@ -37,6 +37,7 @@ public class EnemySpawner : MonoBehaviour
     public bool IsInEMPMode;
     public AudioClip EMPSound;
     public AudioSource PowerUPSSound;
+    
     public List<Enemy> AliveEnemies { get; set; } = new List<Enemy>();
 
     private void Start()

@@ -1409,7 +1409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &617991580
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1734,6 +1734,8 @@ MonoBehaviour:
   _gameState: {fileID: 11400000, guid: 2e40c394667cb3f408f949551d1791f3, type: 2}
   _nextWaveTextField: {fileID: 964716872}
   _maxSpeedChange: 0.015
+  NewEnemyDetectedSound: {fileID: 8300000, guid: d5557e9f2f0227b4a9eef96a0b2b288a, type: 3}
+  PowerUPSSound: {fileID: 578000322}
 --- !u!4 &903966907
 Transform:
   m_ObjectHideFlags: 0
@@ -2291,6 +2293,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1941337289251788281, guid: 852d72f526f6f7341b43e2c597f93d86, type: 3}
+      propertyPath: SmokeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 006794a1e25abd04bbf404e84c2222a5, type: 3}
+    - target: {fileID: 1941337289251788281, guid: 852d72f526f6f7341b43e2c597f93d86, type: 3}
+      propertyPath: PowerUPSSound
+      value: 
+      objectReference: {fileID: 578000322}
     - target: {fileID: 2546803407755837181, guid: 852d72f526f6f7341b43e2c597f93d86, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2536,8 +2546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1122, y: -1122}
-  m_SizeDelta: {x: 176.5, y: 123}
+  m_AnchoredPosition: {x: 1138, y: -1129.7}
+  m_SizeDelta: {x: 208.6, y: 138.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1402026597
 CanvasRenderer:
@@ -2815,8 +2825,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -869.7, y: -1130.8}
-  m_SizeDelta: {x: 305.84, y: 129.51}
+  m_AnchoredPosition: {x: -889.5, y: -1139.3}
+  m_SizeDelta: {x: 266.3, y: 146.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1483342907
 CanvasRenderer:
@@ -4545,6 +4555,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1941337289251788281, guid: 852d72f526f6f7341b43e2c597f93d86, type: 3}
+      propertyPath: SmokeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 006794a1e25abd04bbf404e84c2222a5, type: 3}
+    - target: {fileID: 1941337289251788281, guid: 852d72f526f6f7341b43e2c597f93d86, type: 3}
+      propertyPath: PowerUPSSound
+      value: 
+      objectReference: {fileID: 578000322}
     - target: {fileID: 2546803407755837181, guid: 852d72f526f6f7341b43e2c597f93d86, type: 3}
       propertyPath: m_RootOrder
       value: 6
