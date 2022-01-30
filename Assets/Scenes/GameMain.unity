@@ -1734,6 +1734,8 @@ MonoBehaviour:
   _gameState: {fileID: 11400000, guid: 2e40c394667cb3f408f949551d1791f3, type: 2}
   _nextWaveTextField: {fileID: 964716872}
   _maxSpeedChange: 0.015
+  NewEnemyDetectedSound: {fileID: 8300000, guid: d5557e9f2f0227b4a9eef96a0b2b288a, type: 3}
+  PowerUPSSound: {fileID: 578000322}
 --- !u!4 &903966907
 Transform:
   m_ObjectHideFlags: 0

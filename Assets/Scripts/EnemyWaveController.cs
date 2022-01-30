@@ -48,7 +48,11 @@ public class EnemyWaveController : MonoBehaviour
     private int _waveCount = 1;
     
     private Coroutine _coroutine;
-    
+
+    public AudioClip NewEnemyDetectedSound;
+    public AudioSource PowerUPSSound;
+
+
     private void Start()
     {
         _coroutine = StartCoroutine(SpawnWaves());
@@ -184,6 +188,13 @@ public class EnemyWaveController : MonoBehaviour
             _nextWaveTextField.text = $"Next wave in: {remainingSeconds}";
             remainingSeconds--;
             yield return new WaitForSeconds(1);
+        }
+
+        if (remainingSeconds == 0)
+        {
+            PowerUPSSound.clip = NewEnemyDetectedSound;
+            PowerUPSSound.Play();
+
         }
 
         _nextWaveTextField.enabled = false;
