@@ -17,14 +17,7 @@ public class Defender : MonoBehaviour
     public ParticleSystem NukeEffect;
     public PowerUpController PowerUpController;
 
-    public int TurretCost { get { return PowerUpController.TurretCost; } }
-    public int SmokeCost { get { return PowerUpController.CloudCost; } }
-    public int HealCost { get { return PowerUpController.HealthCost; } }
-    public int TrifireCost { get { return PowerUpController.TriShotCost; } }
-    public int EMPCost { get { return PowerUpController.EmpCost; } }
-    public int NukeCost { get { return PowerUpController.NukeCost; } }
-
-    private bool _trifireMode = false;
+    public bool _trifireMode = false;
     
     // Start is called before the first frame update
     void Start()
@@ -162,7 +155,7 @@ public class Defender : MonoBehaviour
         turret.EnemySpawner = EnemySpawner;
     }
 
-    private IEnumerator EnterTrifireMode()
+    public IEnumerator EnterTrifireMode()
     {
         _trifireMode = true;
         yield return new WaitForSeconds(10.0f);

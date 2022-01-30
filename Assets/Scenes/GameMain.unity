@@ -2598,6 +2598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1720408029}
   enemySpawner: {fileID: 1542135671}
+  PowerUpController: {fileID: 1590993735}
   _gameState: {fileID: 11400000, guid: 2e40c394667cb3f408f949551d1791f3, type: 2}
 --- !u!1001 &1737360796
 PrefabInstance:
@@ -3324,6 +3325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6048695526424587228}
   enemySpawner: {fileID: 507171867}
+  PowerUpController: {fileID: 1573495724}
   _gameState: {fileID: 11400000, guid: 2e40c394667cb3f408f949551d1791f3, type: 2}
 --- !u!114 &6048695526424587228 stripped
 MonoBehaviour:
